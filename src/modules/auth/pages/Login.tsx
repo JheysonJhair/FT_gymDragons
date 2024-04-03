@@ -2,137 +2,99 @@ import React from "react";
 
 export default function Login() {
   return (
-    <div className="section-authentication-signin d-flex align-items-center justify-content-center my-5 my-lg-0">
-      <div className="container">
-        <div className="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
-          <div className="col mx-auto">
-            <div className="card mb-0">
-              <div className="card-body">
-                <div className="p-4">
-                  <div className="mb-3 text-center">
-                    <img src="assets/images/logo-icon.png" width={60} />
+    <div className="row g-0">
+      <div className="col-12 col-xl-7 col-xxl-8 auth-cover-left align-items-center justify-content-center d-none d-xl-flex">
+        <div className="card bg-transparent shadow-none rounded-0 mb-0">
+          <div className="card-body">
+            <img
+              src="assets/images/login-images/login-cover.svg"
+              className="img-fluid auth-img-cover-login"
+              width={650}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="col-12 col-xl-5 col-xxl-4 auth-cover-right align-items-center justify-content-center">
+        <div className="card rounded-0 m-3 shadow-none bg-transparent mb-0 ">
+          <div
+            className="card-body p-sm-5  m-4 "
+            style={{
+              borderRadius: "20px",
+              boxShadow: "0 0 6px rgba(0, 0, 0, 0.2)",
+            }}
+          >
+            <div>
+              <div className="mb-3 text-center">
+                <img src="assets/images/logo-icon.png" width={120} />
+              </div>
+              <div className="text-center mb-4">
+                <h5 className="mb-3 fs-4" style={{ fontWeight: "bold" }}>
+                  Bienvenido
+                </h5>
+                <p className="mb-0 fs-6">
+                  Continua iniciando sesión de manera rápida y sencilla!
+                </p>
+              </div>
+
+              <div className="col-12 mb-4">
+                <select
+                  className="form-select w-100 p-3"
+                  style={{ backgroundColor: "#eff0f4" }}
+                >
+                  <option value="">ZONA FIT ABANCAY</option>
+                </select>
+              </div>
+
+              <div className="form-body">
+                <form className="row g-3">
+                  <div className="col-12">
+                    <label htmlFor="inputEmailAddress" className="form-label">
+                      Usuario
+                    </label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      style={{ padding: "9px" }}
+                      id="inputEmailAddress"
+                      placeholder="Usuario"
+                    />
                   </div>
-                  <div className="text-center mb-4">
-                    <h4></h4>
-                    <h5>Rocker Admin</h5>
-                    <p className="mb-0">Please log in to your account</p>
+                  <div className="col-12">
+                    <label htmlFor="inputChoosePassword" className="form-label">
+                      Contraseña
+                    </label>
+                    <div className="input-group" id="show_hide_password">
+                      <input
+                        type="password"
+                        className="form-control border-end-0"
+                        style={{ padding: "9px" }}
+                        id="inputChoosePassword"
+                        placeholder="Tu contraseña"
+                      />{" "}
+                      <a
+                        href="javascript:;"
+                        className="input-group-text bg-transparent"
+                      >
+                        <i className="bx bx-hide" />
+                      </a>
+                    </div>
                   </div>
-                  <div className="form-body">
-                    <form className="row g-3">
-                      <div className="col-12">
-                        <label
-                          htmlFor="inputEmailAddress"
-                          className="form-label"
-                        >
-                          Email
-                        </label>
-                        <input
-                          type="email"
-                          className="form-control"
-                          id="inputEmailAddress"
-                          placeholder="jhon@example.com"
-                        />
-                      </div>
-                      <div className="col-12">
-                        <label
-                          htmlFor="inputChoosePassword"
-                          className="form-label"
-                        >
-                          Password
-                        </label>
-                        <div className="input-group" id="show_hide_password">
-                          <input
-                            type="password"
-                            className="form-control border-end-0"
-                            id="inputChoosePassword"
-                            defaultValue={12345678}
-                            placeholder="Enter Password"
-                          />{" "}
-                          <a
-                            href="#"
-                            className="input-group-text bg-transparent"
-                          >
-                            <i className="bx bx-hide" />
-                          </a>
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="form-check form-switch">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            id="flexSwitchCheckChecked"
-                          />
-                          <label
-                            className="form-check-label"
-                            htmlFor="flexSwitchCheckChecked"
-                          >
-                            Remember Me
-                          </label>
-                        </div>
-                      </div>
-                      <div className="col-md-6 text-end">
-                        {" "}
-                        <a href="authentication-forgot-password.html">
-                          Forgot Password ?
-                        </a>
-                      </div>
-                      <div className="col-12">
-                        <div className="d-grid">
-                          <button type="submit" className="btn btn-primary">
-                            Sign in
-                          </button>
-                        </div>
-                      </div>
-                      <div className="col-12">
-                        <div className="text-center ">
-                          <p className="mb-0">
-                            Don't have an account yet?{" "}
-                            <a href="authentication-signup.html">
-                              Sign up here
-                            </a>
-                          </p>
-                        </div>
-                      </div>
-                    </form>
+                  <div className="col-12">
+                    <div className="d-grid">
+                      <button
+                        type="submit"
+                        className="btn btn-danger "
+                        style={{ padding: "9px" }}
+                      >
+                        Ingresar
+                      </button>
+                    </div>
                   </div>
-                  <div className="login-separater text-center mb-5">
-                    {" "}
-                    <span>OR SIGN IN WITH</span>
-                    <hr />
-                  </div>
-                  <div className="list-inline contacts-social text-center">
-                    <a
-                      href="#"
-                      className="list-inline-item bg-facebook text-white border-0 rounded-3"
-                    >
-                      <i className="bx bxl-facebook" />
-                    </a>
-                    <a
-                      href="#"
-                      className="list-inline-item bg-twitter text-white border-0 rounded-3"
-                    >
-                      <i className="bx bxl-twitter" />
-                    </a>
-                    <a
-                      href="#"
-                      className="list-inline-item bg-google text-white border-0 rounded-3"
-                    >
-                      <i className="bx bxl-google" />
-                    </a>
-                    <a
-                      href="#"
-                      className="list-inline-item bg-linkedin text-white border-0 rounded-3"
-                    >
-                      <i className="bx bxl-linkedin" />
-                    </a>
-                  </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
-        {/*end row*/}
       </div>
     </div>
   );

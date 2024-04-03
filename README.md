@@ -1,8 +1,8 @@
 <div align="center">
-    <a href="https://github.com/JheysonJhair/FTsale_of_ticket.git">
+    <a href="https://github.com/JheysonJhair/FT_gymDragons.git">
       <img src="public/logo.jpg" width="148px" />
     </a>
-    <h1>Unamba - Comedor Universitario</h1>
+    <h1>GYM Dragons</h1>
     <p align="center">
         Frontend Developer Jhair
     </p>
@@ -14,14 +14,11 @@
 
 ## Módulos
 
-- Módulo de Estudiante
-- Módulo de Productos
-- Módulo de Periodo
-- Módulo de Administrador
-- Módulo de Venta
-- Módulo de Reportes
-- Módulo de Usuarios
-- Módulo de Autenticación
+- Módulo de Cliente
+- Módulo de Membresia
+- Módulo de Producto
+- Módulo de Inventario
+
 
 ## Tecnologías
 
@@ -29,7 +26,7 @@ Este proyecto utiliza las siguientes tecnologías:
 
 - React
 - TypeScript
-- Tailwind CSS
+- Bootstrap
 - Vite
 - BACKEND:
 
@@ -46,7 +43,7 @@ git clone https://github.com/JheysonJhair/FTsale_of_ticket.git
 ```
 
 ```bash
-cd FT_SaleOfTicket
+cd FT_gymDragons
 ```
 
 2. Instala las dependencias con `npm install`.
