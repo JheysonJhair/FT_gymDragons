@@ -1,6 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+import { loginUser } from "../../../services/Login";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e:any) => {
+    e.preventDefault();
+    try {
+      const { success, error } = await loginUser(email, password); 
+      if (success) {
+        console.log("Login successful");
+        navigate("/");
+      } else {
+        console.error(error);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <div className="row g-0">
       <div className="col-12 col-xl-7 col-xxl-8 auth-cover-left align-items-center justify-content-center d-none d-xl-flex">
@@ -39,14 +60,14 @@ export default function Login() {
               <div className="col-12 mb-4">
                 <select
                   className="form-select w-100 p-3"
-                  style={{ backgroundColor: "#eff0f4" }}
+                  style={{ backgroundColor: "#eff0f4", textAlign: "center" }}
                 >
-                  <option value="">ZONA FIT ABANCAY</option>
+                  <option value="">DRAGON'S GYM</option>
                 </select>
               </div>
 
               <div className="form-body">
-                <form className="row g-3">
+              <form className="row g-3" onSubmit={handleSubmit}>
                   <div className="col-12">
                     <label htmlFor="inputEmailAddress" className="form-label">
                       Usuario
@@ -57,6 +78,8 @@ export default function Login() {
                       style={{ padding: "9px" }}
                       id="inputEmailAddress"
                       placeholder="Usuario"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   <div className="col-12">
@@ -70,22 +93,17 @@ export default function Login() {
                         style={{ padding: "9px" }}
                         id="inputChoosePassword"
                         placeholder="Tu contraseña"
-                      />{" "}
-                      <a
-                        href="javascript:;"
-                        className="input-group-text bg-transparent"
-                      >
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                      <a href="javascript:;" className="input-group-text bg-transparent">
                         <i className="bx bx-hide" />
                       </a>
                     </div>
                   </div>
                   <div className="col-12">
                     <div className="d-grid">
-                      <button
-                        type="submit"
-                        className="btn btn-danger "
-                        style={{ padding: "9px" }}
-                      >
+                      <button type="submit" className="btn btn-danger " style={{ padding: "9px" }}>
                         Ingresar
                       </button>
                     </div>

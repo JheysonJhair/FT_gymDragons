@@ -8,16 +8,16 @@ const appRouter = [
   {
     path: "/",
     element:
-      <ProtectedRoute>
+      //<ProtectedRoute>
       <AppLayout />,
-      </ProtectedRoute>,
+      //</ProtectedRoute>,
     children: [
       {
         path: "/",
         element: <HomePage />,
       },
       {
-        path: "/prueba",
+        path: "/operaciones/membresiaspagos/",
         element: <Prueba />,
       },
       {
