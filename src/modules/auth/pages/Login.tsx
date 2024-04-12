@@ -7,12 +7,11 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async (e:any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const { success, error } = await loginUser(email, password); 
+      const { success, error } = await loginUser(email, password);
       if (success) {
-        console.log("Login successful");
         navigate("/");
       } else {
         console.error(error);

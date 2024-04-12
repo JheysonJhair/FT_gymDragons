@@ -1,16 +1,16 @@
 import AppLayout from "@/layouts/AppLayout";
 import { Navigate } from "react-router-dom";
 import { HomePage } from "@/pages/Home";
-import { Prueba } from "@/pages/Prueba";
+import { Membresias } from "@/pages/membresia/Membresia";
 import ProtectedRoute from "@/components/ProtectedRoute ";
 
 const appRouter = [
   {
     path: "/",
     element:
-      //<ProtectedRoute>
+      <ProtectedRoute>
       <AppLayout />,
-      //</ProtectedRoute>,
+      </ProtectedRoute>,
     children: [
       {
         path: "/",
@@ -18,7 +18,7 @@ const appRouter = [
       },
       {
         path: "/operaciones/membresiaspagos/",
-        element: <Prueba />,
+        element: <Membresias />,
       },
       {
         path: "*",

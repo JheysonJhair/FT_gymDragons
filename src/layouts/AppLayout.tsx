@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./../index.css";
 function AppLayout() {
   return (
@@ -34,20 +34,21 @@ function AppLayout() {
 
             <li className="menu-label">GESTIÓN DEL CENTRO</li>
             <li>
-              <Link to="/operaciones/membresiaspagos/">
-                <div className="parent-icon">
-                  <i className="bx bx-cookie" />
-                </div>
-                <div className="menu-title">Membresías y pago</div>
-              </Link>
+            <NavLink to="/operaciones/membresiaspagos/" >
+              <div className="parent-icon">
+                <i className="bx bx-credit-card" />
+              </div>
+              <div className="menu-title">Membresías y pago</div>
+            </NavLink>
             </li>
             <li>
-              <a href="#" className="has-arrow">
+              <a className="has-arrow" href="#">
                 <div className="parent-icon">
-                  <i className="bx bx-cart" />
+                  <i className="bx bx-basket" />
                 </div>
-                <div className="menu-title">Productos</div>
+                <div className="menu-title">Producto</div>
               </a>
+
               <ul>
                 <li>
                   {" "}
@@ -75,10 +76,11 @@ function AppLayout() {
             <li>
               <a className="has-arrow" href="#">
                 <div className="parent-icon">
-                  <i className="bx bx-bookmark-heart" />
+                  <i className="bx bx-user-circle" />
                 </div>
                 <div className="menu-title">Cliente</div>
               </a>
+
               <ul>
                 <li>
                   {" "}
@@ -106,10 +108,11 @@ function AppLayout() {
             <li>
               <a className="has-arrow" href="#">
                 <div className="parent-icon">
-                  <i className="bx bx-repeat" />
+                  <i className="bx bx-archive-in" />
                 </div>
                 <div className="menu-title">Inventario</div>
               </a>
+
               <ul>
                 <li>
                   {" "}
@@ -131,10 +134,11 @@ function AppLayout() {
             <li>
               <a className="has-arrow" href="#">
                 <div className="parent-icon">
-                  <i className="bx bx-message-square-edit" />
+                  <i className="bx bx-package" />
                 </div>
                 <div className="menu-title">Caja</div>
               </a>
+
               <ul>
                 <li>
                   {" "}
@@ -155,10 +159,11 @@ function AppLayout() {
             <li>
               <a className="has-arrow" href="#">
                 <div className="parent-icon">
-                  <i className="bx bx-message-square-edit" />
+                  <i className="bx bx-calendar-check" />
                 </div>
                 <div className="menu-title">Asistencias</div>
               </a>
+
               <ul>
                 <li>
                   {" "}
@@ -197,7 +202,7 @@ function AppLayout() {
             <li>
               <a href="widgets.html">
                 <div className="parent-icon">
-                  <i className="bx bx-cookie" />
+                  <i className="bx bx-bar-chart" />
                 </div>
                 <div className="menu-title">Reportes</div>
               </a>
@@ -205,7 +210,7 @@ function AppLayout() {
             <li>
               <a href="widgets.html">
                 <div className="parent-icon">
-                  <i className="bx bx-cookie" />
+                  <i className="bx bx-table" />
                 </div>
                 <div className="menu-title">Tablas</div>
               </a>
@@ -214,30 +219,31 @@ function AppLayout() {
             <li>
               <a className="has-arrow" href="#">
                 <div className="parent-icon">
-                  <i className="bx bx-menu" />
+                  <i className="bx bx-user" />
                 </div>
                 <div className="menu-title">Usuarios</div>
               </a>
+
               <ul>
                 <li>
                   {" "}
                   <a href="component-alerts.html">
                     <i className="bx bx-radio-circle" />
-                    Clientes
+                    Usuarios
                   </a>
                 </li>
                 <li>
                   {" "}
                   <a href="component-accordions.html">
                     <i className="bx bx-radio-circle" />
-                    Detalle de clientes
+                    Detalle de Usuario
                   </a>
                 </li>
                 <li>
                   {" "}
                   <a href="component-badges.html">
                     <i className="bx bx-radio-circle" />
-                    Nuevo cliente
+                    Nuevo Usuario
                   </a>
                 </li>
               </ul>
@@ -289,14 +295,14 @@ function AppLayout() {
                       href="#"
                       data-bs-toggle="dropdown"
                     >
-                      <span className="alert-count">7</span>
+                      <span className="alert-count">4</span>
                       <i className="bx bx-bell" />
                     </a>
                     <div className="dropdown-menu dropdown-menu-end">
                       <a href="#">
                         <div className="msg-header">
                           <p className="msg-header-title">Notifications</p>
-                          <p className="msg-header-badge">8 New</p>
+                          <p className="msg-header-badge">4 New</p>
                         </div>
                       </a>
                       <div className="header-notifications-list">
@@ -340,108 +346,7 @@ function AppLayout() {
                             </div>
                           </div>
                         </a>
-                        <a className="dropdown-item" href="#">
-                          <div className="d-flex align-items-center">
-                            <div className="user-online">
-                              <img
-                                src="assets/images/avatars/avatar-2.png"
-                                className="msg-avatar"
-                                alt="user avatar"
-                              />
-                            </div>
-                            <div className="flex-grow-1">
-                              <h6 className="msg-name">
-                                Althea Cabardo{" "}
-                                <span className="msg-time float-end">
-                                  14 sec ago
-                                </span>
-                              </h6>
-                              <p className="msg-info">
-                                Many desktop publishing packages
-                              </p>
-                            </div>
-                          </div>
-                        </a>
-                        <a className="dropdown-item" href="#">
-                          <div className="d-flex align-items-center">
-                            <div className="notify bg-light-success text-success">
-                              <img
-                                src="assets/images/app/outlook.png"
-                                width={25}
-                                alt="user avatar"
-                              />
-                            </div>
-                            <div className="flex-grow-1">
-                              <h6 className="msg-name">
-                                Account Created
-                                <span className="msg-time float-end">
-                                  28 min ago
-                                </span>
-                              </h6>
-                              <p className="msg-info">
-                                Successfully created new email
-                              </p>
-                            </div>
-                          </div>
-                        </a>
-                        <a className="dropdown-item" href="#">
-                          <div className="d-flex align-items-center">
-                            <div className="notify bg-light-info text-info">
-                              Ss
-                            </div>
-                            <div className="flex-grow-1">
-                              <h6 className="msg-name">
-                                New Product Approved{" "}
-                                <span className="msg-time float-end">
-                                  2 hrs ago
-                                </span>
-                              </h6>
-                              <p className="msg-info">
-                                Your new product has approved
-                              </p>
-                            </div>
-                          </div>
-                        </a>
-                        <a className="dropdown-item" href="#">
-                          <div className="d-flex align-items-center">
-                            <div className="user-online">
-                              <img
-                                src="assets/images/avatars/avatar-4.png"
-                                className="msg-avatar"
-                                alt="user avatar"
-                              />
-                            </div>
-                            <div className="flex-grow-1">
-                              <h6 className="msg-name">
-                                Katherine Pechon{" "}
-                                <span className="msg-time float-end">
-                                  15 min ago
-                                </span>
-                              </h6>
-                              <p className="msg-info">
-                                Making this the first true generator
-                              </p>
-                            </div>
-                          </div>
-                        </a>
-                        <a className="dropdown-item" href="#">
-                          <div className="d-flex align-items-center">
-                            <div className="notify bg-light-success text-success">
-                              <i className="bx bx-check-square" />
-                            </div>
-                            <div className="flex-grow-1">
-                              <h6 className="msg-name">
-                                Your item is shipped{" "}
-                                <span className="msg-time float-end">
-                                  5 hrs ago
-                                </span>
-                              </h6>
-                              <p className="msg-info">
-                                Successfully shipped your item
-                              </p>
-                            </div>
-                          </div>
-                        </a>
+
                         <a className="dropdown-item" href="#">
                           <div className="d-flex align-items-center">
                             <div className="notify bg-light-primary">
@@ -490,7 +395,7 @@ function AppLayout() {
                       <a href="#">
                         <div className="text-center msg-footer">
                           <button className="btn btn-primary w-100">
-                            View All Notifications
+                            Ver todas las notifaciones
                           </button>
                         </div>
                       </a>

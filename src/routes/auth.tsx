@@ -3,6 +3,7 @@ import Login from "@/modules/auth/pages/Login";
 import ForgotPassword from "@/modules/auth/pages/ForgotPassword";
 import ResetPassword from "@/modules/auth/pages/ResetPassword";
 import { Register } from "@/modules/auth/pages/Register";
+import { Membresias } from "@/pages/membresia/Membresia";
 
 const createAuthRoute = (element: React.ReactNode) => (
   <AuthLayout>{element}</AuthLayout>
@@ -15,7 +16,7 @@ const authRouter = [
   },
   {
     path: "/register",
-    element: createAuthRoute(<Register />),
+    element: createAuthRoute(<Membresias />),
   },
   {
     path: "/forgot-password",
