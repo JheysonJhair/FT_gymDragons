@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 export function Membresias() {
   return (
     <div className="page-wrapper">
@@ -36,9 +38,9 @@ export function Membresias() {
               <div className="card-body">
                 <div className="row mb-3">
                   <div className="col-sm-6">
-                    <button className="btn btn-danger btn-block">
+                  <NavLink to="/area/newcliente/" className="btn btn-danger btn-block">
                       <i className="bx bx-user-plus"></i> Nuevo cliente
-                    </button>
+                    </NavLink>
                   </div>
                   <div className="col-sm-6">
                     <div className="input-group">
@@ -289,19 +291,20 @@ export function Membresias() {
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label htmlFor="input53" className="col-sm-3 col-form-label">
+                  <label htmlFor="input53" className="col-sm-2 col-form-label">
                     Paquete
                   </label>
-                  <div className="col-sm-9">
+                  <div className="col-sm-10">
                     <div className="input-group">
                       <span className="input-group-text">
                         <i className="bx bx-package"></i>
                       </span>
                       <select className="form-select" id="input53">
                         <option selected>Seleccionar paquete aquí</option>
-                        <option value={1}>paquete1</option>
-                        <option value={2}>paquete 2</option>
-                        <option value={3}>paquite 3</option>
+                        <option value={1}>PLAN UNIVERSITARIO <span>PRECIO: 180.00</span></option>
+                        <option value={2}>PUBLICO EN GENERAL PRECIO: 220.00</option>
+                        <option value={3}>INTERDIARIO O MEDIO MES PRECIO: 45.00</option>
+                        <option value={3}>PUBLICO EN GENERAL PRECIO: 90.00</option>
                       </select>
                     </div>
                   </div>

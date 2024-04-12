@@ -15,6 +15,7 @@
 @import url('../src/assets/css/app.css');
 @import url('../src/assets/css/icons.css');
 
+@import url('../src/assets/plugins/datatable/css/dataTables.bootstrap5.min.css');
 /* Estilos personalizados */
 .red-text {
   color: #d10b1e;

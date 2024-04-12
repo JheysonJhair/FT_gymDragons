@@ -23,23 +23,23 @@ function AppLayout() {
           </div>
           {/*navigation*/}
           <ul className="metismenu" id="menu">
-            <li className="mm-active">
-              <a href="#" className="">
+            <li className="">
+              <NavLink to="/">
                 <div className="parent-icon">
                   <i className="bx bx-home-alt" />
                 </div>
                 <div className="menu-title">PANEL PRINCIPAL</div>
-              </a>
+              </NavLink>
             </li>
 
             <li className="menu-label">GESTIÓN DEL CENTRO</li>
             <li>
-            <NavLink to="/operaciones/membresiaspagos/" >
-              <div className="parent-icon">
-                <i className="bx bx-credit-card" />
-              </div>
-              <div className="menu-title">Membresías y pago</div>
-            </NavLink>
+              <NavLink to="/operaciones/membresiaspagos/">
+                <div className="parent-icon">
+                  <i className="bx bx-credit-card" />
+                </div>
+                <div className="menu-title">Membresías y pago</div>
+              </NavLink>
             </li>
             <li>
               <a className="has-arrow" href="#">
@@ -83,11 +83,10 @@ function AppLayout() {
 
               <ul>
                 <li>
-                  {" "}
-                  <a href="component-alerts.html">
+                  <NavLink to="/area/clientes/">
                     <i className="bx bx-radio-circle" />
-                    Clientes
-                  </a>
+                    Todos
+                  </NavLink>
                 </li>
                 <li>
                   {" "}
@@ -97,11 +96,10 @@ function AppLayout() {
                   </a>
                 </li>
                 <li>
-                  {" "}
-                  <a href="component-badges.html">
+                <NavLink to="/area/newcliente/">
                     <i className="bx bx-radio-circle" />
                     Nuevo cliente
-                  </a>
+                    </NavLink>
                 </li>
               </ul>
             </li>
