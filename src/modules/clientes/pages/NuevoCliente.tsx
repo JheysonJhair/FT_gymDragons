@@ -143,7 +143,7 @@ export function NuevoCliente() {
                       onChange={handleInputChange}
                       id="input53"
                     >
-                      <option selected>Seleccionar estado civil</option>
+                      <option >Seleccionar estado civil</option>
                       <option value={1}>Soltero</option>
                       <option value={2}>Casado</option>
                       <option value={3}>Viudo</option>
@@ -166,7 +166,7 @@ export function NuevoCliente() {
                       onChange={handleInputChange}
                       id="input53"
                     >
-                      <option selected>Seleccionar genero</option>
+                      <option >Seleccionar genero</option>
                       <option value={1}>Masculino</option>
                       <option value={2}>Femenino</option>
                     </select>
@@ -183,7 +183,7 @@ export function NuevoCliente() {
                       <i className="bx bx-globe" />
                     </span>
                     <select className="form-select" id="input53">
-                      <option selected>Seleccionar Departamento</option>
+                      <option >Seleccionar Departamento</option>
                       <option value="apurimac">Apurímac</option>
                     </select>
                   </div>
@@ -199,7 +199,7 @@ export function NuevoCliente() {
                       <i className="bx bx-map" />
                     </span>
                     <select className="form-select" id="input53">
-                      <option selected>Seleccionar Provincia</option>
+                      <option >Seleccionar Provincia</option>
                       <option value="andahuaylas">Andahuaylas</option>
                       <option value="antabamba">Antabamba</option>
                       <option value="aymaraes">Aymaraes</option>
@@ -218,7 +218,7 @@ export function NuevoCliente() {
                       <i className="bx bx-location-plus" />
                     </span>
                     <select className="form-select" id="input53">
-                      <option selected>Seleccionar Distrito</option>
+                      <option >Seleccionar Distrito</option>
                       <option value="andahuaylas">Andahuaylas</option>
                       <option value="san_jeronimo">San Jerónimo</option>
                       <option value="talavera">Talavera</option>

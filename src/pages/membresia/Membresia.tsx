@@ -173,7 +173,7 @@ export function Membresias() {
                         <i className="bx bx-heart" />
                       </span>
                       <select className="form-select" id="input53">
-                        <option selected>Seleccionar estado civil</option>
+                        <option >Seleccionar estado civil</option>
                         <option value={1}>Soltero</option>
                         <option value={2}>Casado</option>
                         <option value={3}>Viudo</option>
@@ -191,7 +191,7 @@ export function Membresias() {
                         <i className="bx bx-user-circle" />
                       </span>
                       <select className="form-select" id="input53">
-                        <option selected>Seleccionar genero</option>
+                        <option >Seleccionar genero</option>
                         <option value={1}>Masculino</option>
                         <option value={2}>Femenino</option>
                       </select>
@@ -300,7 +300,7 @@ export function Membresias() {
                         <i className="bx bx-package"></i>
                       </span>
                       <select className="form-select" id="input53">
-                        <option selected>Seleccionar paquete aquí</option>
+                        <option >Seleccionar paquete aquí</option>
                         <option value={1}>PLAN UNIVERSITARIO <span>PRECIO: 180.00</span></option>
                         <option value={2}>PUBLICO EN GENERAL PRECIO: 220.00</option>
                         <option value={3}>INTERDIARIO O MEDIO MES PRECIO: 45.00</option>
@@ -538,7 +538,7 @@ export function Membresias() {
                         <i className="bx bx-package"></i>
                       </span>
                       <select className="form-select" id="input53">
-                        <option selected>Seleccionar forma de pago</option>
+                        <option >Seleccionar forma de pago</option>
                         <option value={1}>paquete1</option>
                         <option value={2}>paquete 2</option>
                         <option value={3}>paquite 3</option>
@@ -556,7 +556,7 @@ export function Membresias() {
                         <i className="bx bx-package"></i>
                       </span>
                       <select className="form-select" id="input53">
-                        <option selected>Seleccionar comprobante</option>
+                        <option >Seleccionar comprobante</option>
                         <option value={1}>paquete1</option>
                         <option value={2}>paquete 2</option>
                         <option value={3}>paquite 3</option>
