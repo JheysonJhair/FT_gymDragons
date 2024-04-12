@@ -7,10 +7,11 @@ import ProtectedRoute from "@/components/ProtectedRoute ";
 const appRouter = [
   {
     path: "/",
-    element:
+    element: (
       <ProtectedRoute>
-      <AppLayout />,
-      </ProtectedRoute>,
+        <AppLayout />,
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: "/",

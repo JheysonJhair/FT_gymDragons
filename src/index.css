@@ -1,6 +1,23 @@
+/* Estilos de plugins */
+@import url('../src/assets/plugins/simplebar/css/simplebar.css');
+@import url('../src/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css');
+@import url('../src/assets/plugins/metismenu/css/metisMenu.min.css');
+
+/* Estilos del loader */
+@import url('../src/assets/css/pace.min.css');
+
+/* Estilos de Bootstrap */
+@import url('../src/assets/css/bootstrap.min.css');
+@import url('../src/assets/css/bootstrap-extended.css');
+
+
+/* Estilos de la aplicación */
+@import url('../src/assets/css/app.css');
+@import url('../src/assets/css/icons.css');
+
+/* Estilos personalizados */
 .red-text {
-    color:#D10B1E;
-    font-weight: bold;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
+  color: #d10b1e;
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

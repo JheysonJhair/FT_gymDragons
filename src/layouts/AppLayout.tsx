@@ -9,7 +9,7 @@ function AppLayout() {
           <div className="sidebar-header">
             <div>
               <img
-                src="assets/images/logo_small.png"
+                src="../../assets/images/logo_small.png"
                 className="logo-icon"
                 alt="logo icon"
               />
@@ -310,7 +310,7 @@ function AppLayout() {
                           <div className="d-flex align-items-center">
                             <div className="user-online">
                               <img
-                                src="assets/images/avatars/avatar-1.png"
+                                src="../../assets/images/avatars/avatar-1.png"
                                 className="msg-avatar"
                                 alt="user avatar"
                               />
@@ -351,7 +351,7 @@ function AppLayout() {
                           <div className="d-flex align-items-center">
                             <div className="notify bg-light-primary">
                               <img
-                                src="assets/images/app/github.png"
+                                src="../../assets/images/app/github.png"
                                 width={25}
                                 alt="user avatar"
                               />
@@ -373,7 +373,7 @@ function AppLayout() {
                           <div className="d-flex align-items-center">
                             <div className="user-online">
                               <img
-                                src="assets/images/avatars/avatar-8.png"
+                                src="../../assets/images/avatars/avatar-8.png"
                                 className="msg-avatar"
                                 alt="user avatar"
                               />
@@ -412,7 +412,7 @@ function AppLayout() {
                   aria-expanded="false"
                 >
                   <img
-                    src="assets/images/avatars/avatar-11.png"
+                    src="../../assets/images/avatars/avatar-11.png"
                     className="user-img"
                     alt="user avatar"
                   />
