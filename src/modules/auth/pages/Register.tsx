@@ -1,3 +1,4 @@
+
 export function Register() {
   return (
     <div className="d-flex align-items-center justify-content-center my-5">

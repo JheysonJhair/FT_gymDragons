@@ -1,7 +1,9 @@
 import { Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import "./../index.css";
+import { useAuth } from '../hooks/AuthContext';
+
 function AppLayout() {
+  const { user } = useAuth();
   return (
     <>
       <div className="wrapper">
@@ -415,7 +417,7 @@ function AppLayout() {
                     alt="user avatar"
                   />
                   <div className="user-info">
-                    <p className="user-name mb-0">Jhair Arone</p>
+                    <p className="user-name mb-0">{user?.Username}</p>
                     <p className="designattion mb-0">Usuario supremo</p>
                   </div>
                 </a>

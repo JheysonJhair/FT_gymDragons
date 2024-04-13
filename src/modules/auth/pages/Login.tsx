@@ -1,23 +1,26 @@
 import React, { useState } from "react";
-import { loginUser } from "../../../services/Login";
+import { login } from "../../../services/Login";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../hooks/AuthContext";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { setUser } = useAuth();
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const { success, error } = await loginUser(email, password);
-      if (success) {
+      console.log(username, password);
+      const response = await login({ username: username, password: password });
+      console.log(response.data)
+      if (response.success) {
+        setUser(response.data);
         navigate("/");
-      } else {
-        console.error(error);
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.log("Error al iniciar sesión");
     }
   };
 
@@ -66,19 +69,19 @@ export default function Login() {
               </div>
 
               <div className="form-body">
-              <form className="row g-3" onSubmit={handleSubmit}>
+                <form className="row g-3" onSubmit={handleSubmit}>
                   <div className="col-12">
                     <label htmlFor="inputEmailAddress" className="form-label">
                       Usuario
                     </label>
                     <input
-                      type="email"
+                      type="text"
                       className="form-control"
                       style={{ padding: "9px" }}
                       id="inputEmailAddress"
                       placeholder="Usuario"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
                     />
                   </div>
                   <div className="col-12">
@@ -95,14 +98,21 @@ export default function Login() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                       />
-                      <a href="javascript:;" className="input-group-text bg-transparent">
+                      <a
+                        href="javascript:;"
+                        className="input-group-text bg-transparent"
+                      >
                         <i className="bx bx-hide" />
                       </a>
                     </div>
                   </div>
                   <div className="col-12">
                     <div className="d-grid">
-                      <button type="submit" className="btn btn-danger " style={{ padding: "9px" }}>
+                      <button
+                        type="submit"
+                        className="btn btn-danger "
+                        style={{ padding: "9px" }}
+                      >
                         Ingresar
                       </button>
                     </div>

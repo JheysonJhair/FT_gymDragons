@@ -9,10 +9,11 @@ import { NuevoCliente } from "@/modules/clientes/pages/NuevoCliente";
 const appRouter = [
   {
     path: "/",
-    element:
+    element: (
       <ProtectedRoute>
-      <AppLayout />,
-      </ProtectedRoute>,
+      <AppLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: "/",

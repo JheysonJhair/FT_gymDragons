@@ -1,12 +1,16 @@
 export interface Cliente {
-  idCliente?: string;
-  FirtsName: string;
+  IdClient?: string;
+  Code: string;
+  Username: string;
+  FirstName: string;
   LastName: string;
   PhoneNumber: string;
   Document: string;
+  DocumentType:string;
   Birdhate: string;
-  MeritalStatus: string;
-  GendersName: string;
+  MaritalStatus: string;
+  Gender: string;
   Address: string;
+  Whatsapp:string;
   Email: string;
 }
