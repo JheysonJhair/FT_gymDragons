@@ -19,11 +19,7 @@
 
 /* Estilos de la aplicación */
 @import url('../src/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css');
-@import url('../src/assets/plugins/simplebar/css/simplebar.css');
 
-
-@import url('../src/assets/css/pace.min.css');
-@import url('../src/assets/plugins/metismenu/css/metisMenu.min.css');
 
 /* Estilos personalizados */
 .red-text {

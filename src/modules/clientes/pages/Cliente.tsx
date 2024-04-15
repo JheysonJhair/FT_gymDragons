@@ -33,17 +33,20 @@ export function Clientes() {
                 <th>Email</th>
                 <th>Estado Civil</th>
                 <th>Fecha de nacimiento</th>
+                <th>Género</th>
                 <th>Dirección</th>
               </tr>
             </thead>
             <tbody>
               {clientes.map((cliente, index) => (
                 <tr key={index}>
-                  <td>{cliente.FirtsName}</td>
+                  <td>{cliente.FirstName}</td>
                   <td>{cliente.LastName}</td>
                   <td>{cliente.Document}</td>
                   <td>{cliente.PhoneNumber}</td>
-                  <td>{cliente.MeritalStatus}</td>
+                  <td>{cliente.Email}</td>
+                  <td>{cliente.MaritalStatus}</td>
+                  <td>{cliente.Gender}</td>
                   <td>{cliente.Birdhate}</td>
                   <td>{cliente.Address}</td>
                 </tr>

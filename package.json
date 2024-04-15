@@ -66,6 +66,7 @@
   "devDependencies": {
     "@svgdotjs/svg.js": "^3.2.0",
     "@types/accounting": "^0.4.5",
+    "@types/datatables.net": "^1.12.0",
     "@types/jquery": "^3.5.29",
     "@types/jspdf": "^2.0.0",
     "@types/node": "^20.9.0",

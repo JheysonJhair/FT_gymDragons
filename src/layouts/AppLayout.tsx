@@ -1,8 +1,42 @@
 import { Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useAuth } from '../hooks/AuthContext';
+import React, { useEffect, useState } from 'react';
 
 function AppLayout() {
+  const [reloadScripts, setReloadScripts] = useState(0); // Variable de estado para forzar la recarga de scripts
+
+  useEffect(() => {
+    const scriptPaths = [
+      '../assets/js/jquery.min.js',
+      '../assets/plugins/simplebar/js/simplebar.min.js',
+      '../assets/plugins/datatable/js/jquery.dataTables.min.js',
+      '../assets/plugins/metismenu/js/metisMenu.min.js',
+      '../assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js',
+      '../assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js',
+      '../assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js',
+      '../assets/plugins/chartjs/js/chart.js',
+      '../assets/js/index.js',
+      '../assets/js/app.js'
+    ];
+
+    scriptPaths.forEach(scriptPath => {
+      const script = document.createElement('script');
+      script.src = scriptPath;
+      script.async = true;
+      document.body.appendChild(script);
+    });
+
+    return () => {
+      scriptPaths.forEach(scriptPath => {
+        const script = document.querySelector(`script[src="${scriptPath}"]`);
+        if (script) {
+          document.body.removeChild(script);
+        }
+      });
+    };
+  }, [reloadScripts]); 
+
   const { user } = useAuth();
   return (
     <>

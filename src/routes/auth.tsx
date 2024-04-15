@@ -3,6 +3,7 @@ import Login from "@/modules/auth/pages/Login";
 import ForgotPassword from "@/modules/auth/pages/ForgotPassword";
 import ResetPassword from "@/modules/auth/pages/ResetPassword";
 import { Register } from "@/modules/auth/pages/Register";
+import { HomePage } from "@/pages/Home";
 
 
 const createAuthRoute = (element: React.ReactNode) => (
@@ -16,7 +17,7 @@ const authRouter = [
   },
   {
     path: "/register",
-    element: createAuthRoute(<Register />),
+    element: createAuthRoute(<HomePage />),
   },
   {
     path: "/forgot-password",
