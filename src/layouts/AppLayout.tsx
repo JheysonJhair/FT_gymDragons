@@ -1,11 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useAuth } from '../hooks/AuthContext';
-import React, { useEffect, useState } from 'react';
-
+import React, { useEffect } from 'react';
 function AppLayout() {
-  const [reloadScripts, setReloadScripts] = useState(0); // Variable de estado para forzar la recarga de scripts
-
   useEffect(() => {
     const scriptPaths = [
       '../assets/js/jquery.min.js',
@@ -20,22 +17,32 @@ function AppLayout() {
       '../assets/js/app.js'
     ];
 
-    scriptPaths.forEach(scriptPath => {
-      const script = document.createElement('script');
-      script.src = scriptPath;
-      script.async = true;
-      document.body.appendChild(script);
-    });
-
-    return () => {
-      scriptPaths.forEach(scriptPath => {
-        const script = document.querySelector(`script[src="${scriptPath}"]`);
-        if (script) {
-          document.body.removeChild(script);
-        }
+    const loadScript = (path:any) => {
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = path;
+        script.async = true;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.body.appendChild(script);
       });
     };
-  }, [reloadScripts]); 
+
+    const loadScripts = async () => {
+      for (const scriptPath of scriptPaths) {
+        try {
+          await loadScript(scriptPath);
+          console.log(`Script loaded: ${scriptPath}`);
+        } catch (error) {
+          console.error(`Failed to load script: ${scriptPath}`, error);
+        }
+      }
+      console.log("All scripts loaded successfully.");
+    };
+
+    loadScripts();
+
+  }, []);
 
   const { user } = useAuth();
   return (

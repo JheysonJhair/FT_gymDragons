@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
+
 export function HomePage() {
   useEffect(() => {
     const scriptPaths = [
       '../assets/js/jquery.min.js',
       '../assets/plugins/simplebar/js/simplebar.min.js',
       '../assets/plugins/datatable/js/jquery.dataTables.min.js',
-      '../assets/plugins/metismenu/js/metisMenu.min.js',
       '../assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js',
       '../assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js',
       '../assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js',
@@ -14,22 +14,32 @@ export function HomePage() {
       '../assets/js/app.js'
     ];
 
-    scriptPaths.forEach(scriptPath => {
-      const script = document.createElement('script');
-      script.src = scriptPath;
-      script.async = true;
-      document.body.appendChild(script);
-    });
-
-    return () => {
-      scriptPaths.forEach(scriptPath => {
-        const script = document.querySelector(`script[src="${scriptPath}"]`);
-        if (script) {
-          document.body.removeChild(script);
-        }
+    const loadScript = (path:any) => {
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = path;
+        script.async = true;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.body.appendChild(script);
       });
     };
-  }, []); 
+
+    const loadScripts = async () => {
+      for (const scriptPath of scriptPaths) {
+        try {
+          await loadScript(scriptPath);
+          console.log(`Script loaded: ${scriptPath}`);
+        } catch (error) {
+          console.error(`Failed to load script: ${scriptPath}`, error);
+        }
+      }
+      console.log("All scripts loaded successfully.");
+    };
+
+    loadScripts();
+
+  }, []);
   return (
     <div className="page-wrapper">
       <div className="page-content">
