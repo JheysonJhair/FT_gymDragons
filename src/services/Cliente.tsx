@@ -26,7 +26,7 @@ export async function obtenerClientes(): Promise<Cliente[]> {
 
 export async function crearCliente(cliente: Partial<Cliente>): Promise<void> {
   try {
-    const response = await fetch('URL_DE_TU_API_CREATE', {
+    const response = await fetch('https://zonafitbk.ccontrolz.com/api/client', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

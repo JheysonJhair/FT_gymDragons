@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import Swal from "sweetalert2";
 import { crearCliente } from "../../../services/Cliente";
 import { Cliente } from "../../../types/Cliente";
 
@@ -16,11 +17,21 @@ export function NuevoCliente() {
   };
 
   const handleRegistrarCliente = async () => {
-    console.log("Datos del nuevo cliente:", nuevoCliente);
     try {
       await crearCliente(nuevoCliente);
-      console.log("¡Cliente registrado con éxito!");
+      Swal.fire({
+        title: "Correcto!",
+        text: "El cliente se registro correctamente!",
+        icon: "success",
+        confirmButtonText: "Aceptar",
+      });
     } catch (error) {
+      Swal.fire({
+        title: "Error!",
+        text: "Oppss, algo salio mal!",
+        icon: "error",
+        confirmButtonText: "Aceptar",
+      });
       console.error("Error al registrar el nuevo cliente:", error);
     }
   };
@@ -47,12 +58,12 @@ export function NuevoCliente() {
         </div>
         <div className="card p-4">
           <div className="row">
-            <div className="col-sm-7">
+            <div className="col-sm-6">
               <div className="row mb-3">
-                <label htmlFor="input49" className="col-sm-3 col-form-label">
+                <label htmlFor="input49" className="col-sm-4 col-form-label">
                   Nombres
                 </label>
-                <div className="col-sm-9">
+                <div className="col-sm-8">
                   <div className="input-group">
                     <span className="input-group-text">
                       <i className="bx bx-user" />
@@ -62,17 +73,17 @@ export function NuevoCliente() {
                       className="form-control"
                       id="input49"
                       placeholder="Nombre"
-                      name="FirtsName"
+                      name="firstName"
                       onChange={handleInputChange}
                     />
                   </div>
                 </div>
               </div>
               <div className="row mb-3">
-                <label htmlFor="input49" className="col-sm-3 col-form-label">
+                <label htmlFor="input49" className="col-sm-4 col-form-label">
                   Apellidos
                 </label>
-                <div className="col-sm-9">
+                <div className="col-sm-8">
                   <div className="input-group">
                     <span className="input-group-text">
                       <i className="bx bx-user" />
@@ -82,37 +93,18 @@ export function NuevoCliente() {
                       className="form-control"
                       id="input49"
                       placeholder="Apellidos"
-                      name="LastName"
+                      name="lastName"
                       onChange={handleInputChange}
                     />
                   </div>
                 </div>
               </div>
+
               <div className="row mb-3">
-                <label htmlFor="input50" className="col-sm-3 col-form-label">
-                  DNI
-                </label>
-                <div className="col-sm-9">
-                  <div className="input-group">
-                    <span className="input-group-text">
-                      <i className="bx bx-id-card" />
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="input50"
-                      placeholder="Dni"
-                      name="Document"
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="row mb-3">
-                <label htmlFor="input49" className="col-sm-3 col-form-label">
+                <label htmlFor="input49" className="col-sm-4 col-form-label">
                   Direccion
                 </label>
-                <div className="col-sm-9">
+                <div className="col-sm-8">
                   <div className="input-group">
                     <span className="input-group-text">
                       <i className="bx bx-map" />
@@ -122,121 +114,120 @@ export function NuevoCliente() {
                       className="form-control"
                       id="input49"
                       placeholder="Dirección"
-                      name="Address"
+                      name="address"
                       onChange={handleInputChange}
                     />
                   </div>
                 </div>
               </div>
               <div className="row mb-3">
-                <label htmlFor="input53" className="col-sm-3 col-form-label">
+                <label htmlFor="input53" className="col-sm-4 col-form-label">
                   Estado civil
                 </label>
-                <div className="col-sm-9">
+                <div className="col-sm-8">
                   <div className="input-group">
                     <span className="input-group-text">
                       <i className="bx bx-heart" />
                     </span>
                     <select
                       className="form-select"
-                      name="MeritalStatus"
+                      name="maritalStatus"
                       onChange={handleInputChange}
                       id="input53"
                     >
-                      <option >Seleccionar estado civil</option>
-                      <option value={1}>Soltero</option>
-                      <option value={2}>Casado</option>
-                      <option value={3}>Viudo</option>
+                      <option>Seleccionar estado civil</option>
+                      <option value="Soltero">Soltero</option>
+                      <option value="Casado">Casado</option>
+                      <option value="Viudo">Viudo</option>
                     </select>
                   </div>
                 </div>
               </div>
               <div className="row mb-3">
-                <label htmlFor="input53" className="col-sm-3 col-form-label">
+                <label htmlFor="input53" className="col-sm-4 col-form-label">
                   Género
                 </label>
-                <div className="col-sm-9">
+                <div className="col-sm-8">
                   <div className="input-group">
                     <span className="input-group-text">
                       <i className="bx bx-user-circle" />
                     </span>
                     <select
                       className="form-select"
-                      name="Gender"
+                      name="gender"
                       onChange={handleInputChange}
                       id="input53"
                     >
-                      <option >Seleccionar genero</option>
-                      <option value={1}>Masculino</option>
-                      <option value={2}>Femenino</option>
+                      <option>Seleccionar genero</option>
+                      <option value="Masculino">Masculino</option>
+                      <option value="Femenino">Femenino</option>
                     </select>
                   </div>
                 </div>
               </div>
               <div className="row mb-3">
-                <label htmlFor="input53" className="col-sm-3 col-form-label">
-                  Departamento
+                <label htmlFor="input53" className="col-sm-4 col-form-label">
+                  Tipo de documento
                 </label>
-                <div className="col-sm-9">
+                <div className="col-sm-8">
                   <div className="input-group">
                     <span className="input-group-text">
                       <i className="bx bx-globe" />
                     </span>
-                    <select className="form-select" id="input53">
-                      <option >Seleccionar Departamento</option>
-                      <option value="apurimac">Apurímac</option>
+                    <select
+                      className="form-select"
+                      name="documentType"
+                      onChange={handleInputChange}
+                      id="input53"
+                    >
+                      <option>Seleccionar tipo</option>
+                      <option value="dni">DNI</option>
+                      <option value="carnet">Carnet</option>
                     </select>
                   </div>
                 </div>
               </div>
               <div className="row mb-3">
-                <label htmlFor="input53" className="col-sm-3 col-form-label">
-                  Provincia
+                <label htmlFor="input50" className="col-sm-4 col-form-label">
+                  DNI
                 </label>
-                <div className="col-sm-9">
+                <div className="col-sm-8">
                   <div className="input-group">
                     <span className="input-group-text">
-                      <i className="bx bx-map" />
+                      <i className="bx bx-id-card" />
                     </span>
-                    <select className="form-select" id="input53">
-                      <option >Seleccionar Provincia</option>
-                      <option value="andahuaylas">Andahuaylas</option>
-                      <option value="antabamba">Antabamba</option>
-                      <option value="aymaraes">Aymaraes</option>
-                      <option value="cotabambas">Cotabambas</option>
-                    </select>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="input50"
+                      placeholder="Dni"
+                      name="document"
+                      onChange={handleInputChange}
+                    />
                   </div>
                 </div>
               </div>
               <div className="row mb-3">
-                <label htmlFor="input53" className="col-sm-3 col-form-label">
-                  Distrito
+                <label htmlFor="input50" className="col-sm-4 col-form-label">
+                  Fecha de nacimiento
                 </label>
-                <div className="col-sm-9">
+                <div className="col-sm-8">
                   <div className="input-group">
                     <span className="input-group-text">
-                      <i className="bx bx-location-plus" />
+                      <i className="bx bx-calendar-plus"></i>
                     </span>
-                    <select className="form-select" id="input53">
-                      <option >Seleccionar Distrito</option>
-                      <option value="andahuaylas">Andahuaylas</option>
-                      <option value="san_jeronimo">San Jerónimo</option>
-                      <option value="talavera">Talavera</option>
-                      <option value="antabamba">Antabamba</option>
-                      <option value="el_oro">El Oro</option>
-                      <option value="juan_espinoza_medrano">
-                        Juan Espinoza Medrano
-                      </option>
-                      <option value="chalhuanca">Chalhuanca</option>
-                      <option value="chincheros">Chincheros</option>
-                      <option value="cotabambas">Cotabambas</option>
-                      <option value="tambobamba">Tambobamba</option>
-                    </select>
+                    <input
+                      type="date"
+                      className="form-control"
+                      placeholder="Fecha de Inicio"
+                      name="Birdhate"
+                      onChange={handleInputChange}
+                    />
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-sm-5">
+            <div className="col-sm-6">
               <div className="d-flex flex-column align-items-center text-center mb-5">
                 <img
                   src="../../assets/images/avatars/avatar-1.png"
@@ -259,7 +250,7 @@ export function NuevoCliente() {
                       className="form-control"
                       id="input51"
                       placeholder="Email"
-                      name="Email"
+                      name="email"
                       onChange={handleInputChange}
                     />
                   </div>
@@ -278,8 +269,8 @@ export function NuevoCliente() {
                       type="text"
                       className="form-control"
                       id="input50"
-                      placeholder="Número"
-                      name="PhoneNumber"
+                      placeholder="Número de teléfono"
+                      name="phoneNumber"
                       onChange={handleInputChange}
                     />
                   </div>
@@ -287,18 +278,19 @@ export function NuevoCliente() {
               </div>
               <div className="row mb-3">
                 <label htmlFor="input50" className="col-sm-4 col-form-label">
-                  Fecha de nacimiento
+                  Whatssap
                 </label>
                 <div className="col-sm-8">
                   <div className="input-group">
                     <span className="input-group-text">
-                      <i className="bx bx-calendar-plus"></i>
+                      <i className="bx bx-phone" />
                     </span>
                     <input
-                      type="date"
+                      type="text"
                       className="form-control"
-                      placeholder="Fecha de Inicio"
-                      name="Birdhate"
+                      id="input50"
+                      placeholder="Número de whatssap"
+                      name="whatsapp"
                       onChange={handleInputChange}
                     />
                   </div>

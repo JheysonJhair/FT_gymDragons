@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
+
 import { login } from "../../../services/Login";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/AuthContext";
+
 
 export default function Login() {
   const navigate = useNavigate();
@@ -12,14 +15,33 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      console.log(username, password);
       const response = await login({ username: username, password: password });
-      console.log(response.data)
       if (response.success) {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `Bienvenido ${response.data.FirstName}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
         setUser(response.data);
         navigate("/");
       }
+      if (!response.success) {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Usuario o contraseña icorrecta!',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        })
+      }
     } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Oppss, algo salio mal!',
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+      })
       console.log("Error al iniciar sesión");
     }
   };

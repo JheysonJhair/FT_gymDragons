@@ -32,7 +32,7 @@ export function Clientes() {
                 <th>Teléfono</th>
                 <th>Email</th>
                 <th>Estado Civil</th>
-                <th>Fecha de nacimiento</th>
+                <th>Whatssap</th>
                 <th>Género</th>
                 <th>Dirección</th>
               </tr>
@@ -46,8 +46,8 @@ export function Clientes() {
                   <td>{cliente.PhoneNumber}</td>
                   <td>{cliente.Email}</td>
                   <td>{cliente.MaritalStatus}</td>
+                  <td>{cliente.Whatsapp}</td>
                   <td>{cliente.Gender}</td>
-                  <td>{cliente.Birdhate}</td>
                   <td>{cliente.Address}</td>
                 </tr>
               ))}
