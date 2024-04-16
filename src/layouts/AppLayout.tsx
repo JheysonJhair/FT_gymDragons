@@ -1,25 +1,25 @@
 import { Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import { useAuth } from '../hooks/AuthContext';
-import React, { useEffect } from 'react';
+import { useAuth } from "../hooks/AuthContext";
+import React, { useEffect } from "react";
 function AppLayout() {
   useEffect(() => {
     const scriptPaths = [
-      '../assets/js/jquery.min.js',
-      '../assets/plugins/simplebar/js/simplebar.min.js',
-      '../assets/plugins/datatable/js/jquery.dataTables.min.js',
-      '../assets/plugins/metismenu/js/metisMenu.min.js',
-      '../assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js',
-      '../assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js',
-      '../assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js',
-      '../assets/plugins/chartjs/js/chart.js',
-      '../assets/js/index.js',
-      '../assets/js/app.js'
+      "../assets/js/jquery.min.js",
+      "../assets/plugins/simplebar/js/simplebar.min.js",
+      "../assets/plugins/datatable/js/jquery.dataTables.min.js",
+      "../assets/plugins/metismenu/js/metisMenu.min.js",
+      "../assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js",
+      "../assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js",
+      "../assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js",
+      "../assets/plugins/chartjs/js/chart.js",
+      "../assets/js/index.js",
+      "../assets/js/app.js",
     ];
 
-    const loadScript = (path:any) => {
+    const loadScript = (path: any) => {
       return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
+        const script = document.createElement("script");
         script.src = path;
         script.async = true;
         script.onload = resolve;
@@ -41,7 +41,6 @@ function AppLayout() {
     };
 
     loadScripts();
-
   }, []);
 
   const { user } = useAuth();
@@ -131,10 +130,10 @@ function AppLayout() {
                   </NavLink>
                 </li>
                 <li>
-                <NavLink to="/area/newcliente/">
+                  <NavLink to="/area/newcliente/">
                     <i className="bx bx-radio-circle" />
                     Nuevo cliente
-                    </NavLink>
+                  </NavLink>
                 </li>
               </ul>
             </li>
@@ -259,25 +258,16 @@ function AppLayout() {
 
               <ul>
                 <li>
-                  {" "}
-                  <a href="component-alerts.html">
+                  <NavLink to="/area/usuarios/">
                     <i className="bx bx-radio-circle" />
-                    Usuarios
-                  </a>
+                    Todos
+                  </NavLink>
                 </li>
                 <li>
-                  {" "}
-                  <a href="component-accordions.html">
+                  <NavLink to="/area/newusuario/">
                     <i className="bx bx-radio-circle" />
-                    Detalle de Usuario
-                  </a>
-                </li>
-                <li>
-                  {" "}
-                  <a href="component-badges.html">
-                    <i className="bx bx-radio-circle" />
-                    Nuevo Usuario
-                  </a>
+                    Nuevo usuario
+                  </NavLink>
                 </li>
               </ul>
             </li>

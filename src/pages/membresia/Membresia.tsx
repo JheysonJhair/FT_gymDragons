@@ -5,6 +5,7 @@ import {
   obtenerClientePorDNI,
 } from "../../services/Cliente";
 import { allCliente } from "../../types/Cliente";
+
 export function Membresias() {
   const [cliente, setCliente] = useState<allCliente | null>(null);
 
@@ -199,7 +200,11 @@ export function Membresias() {
                       <span className="input-group-text">
                         <i className="bx bx-heart" />
                       </span>
-                      <select className="form-select" id="input53" value={cliente?.MaritalStatus || ""}>
+                      <select
+                        className="form-select"
+                        id="input53"
+                        value={cliente?.MaritalStatus || ""}
+                      >
                         <option>Seleccionar estado civil</option>
                         <option value="Soltero">Soltero</option>
                         <option value="Casado">Casado</option>

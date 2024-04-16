@@ -1,40 +1,40 @@
 import React, { useState, useEffect } from "react";
-import { obtenerClientes } from "../../../services/Cliente";
-import { allCliente } from "../../../types/Cliente";
+import { obtenerUsuarios } from "../../../services/Usuario";
+import { Usuario } from "../../../types/Usuario";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 
-export function Clientes() {
-  const [clientes, setClientes] = useState<allCliente[]>([]);
+export function User() {
+  const [usuarios, setUsuarios] = useState<Usuario[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [clientesPerPage] = useState(9);
+  const [UsuariosPerPage] = useState(9);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await obtenerClientes();
-      setClientes(data);
+      const data = await obtenerUsuarios();
+      setUsuarios(data);
     };
 
     fetchData();
   }, []);
 
-  const indexOfLastCliente = currentPage * clientesPerPage;
-  const indexOfFirstCliente = indexOfLastCliente - clientesPerPage;
-  const currentClientes = clientes.slice(
-    indexOfFirstCliente,
-    indexOfLastCliente
+  const indexOfLastUsuario = currentPage * UsuariosPerPage;
+  const indexOfFirstUsuario = indexOfLastUsuario - UsuariosPerPage;
+  const currentUsuarios = usuarios.slice(
+    indexOfFirstUsuario,
+    indexOfLastUsuario
   );
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-  const filteredClientes = currentClientes.filter((cliente) =>
-    Object.values(cliente).some((value) =>
+  const filteredUsuarios = currentUsuarios.filter((usuario) =>
+    Object.values(usuario).some((value) =>
       value.toString().toLowerCase().includes(searchTerm.toLowerCase())
     )
   );
 
-  const eliminarCliente = async (id: number) => {
+  const eliminarUsuario = async (id: number) => {
     try {
       const confirmacion = await Swal.fire({
         title: "¿Estás seguro?",
@@ -49,29 +49,29 @@ export function Clientes() {
 
       if (confirmacion.isConfirmed) {
         const response = await fetch(
-          `https://zonafitbk.ccontrolz.com/api/client/${id}`,
+          `https://zonafitbk.ccontrolz.com/api/users/${id}`,
           {
             method: "DELETE",
           }
         );
         if (!response.ok) {
-          throw new Error("Error al eliminar el cliente");
+          throw new Error("Error al eliminar el usuario");
         }
 
-        const updatedClientes = clientes.filter(
-          (cliente) => cliente.IdClient !== id
+        const updatedUsuarios = usuarios.filter(
+          (usuario) => usuario.IdUser !== id
         );
-        setClientes(updatedClientes);
+        setUsuarios(updatedUsuarios);
 
         await Swal.fire(
           "¡Eliminado!",
-          "Tu cliente ha sido eliminado.",
+          "El usuario ha sido eliminado.",
           "success"
         );
       }
     } catch (error) {
-      console.error("Error al eliminar el cliente:", error);
-      Swal.fire("Error", "Hubo un error al eliminar el cliente", "error");
+      console.error("Error al eliminar el usuario:", error);
+      Swal.fire("Error", "Hubo un error al eliminar el usuario", "error");
     }
   };
 
@@ -79,7 +79,7 @@ export function Clientes() {
     <div className="page-wrapper">
       <div className="page-content">
         <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-          <div className="breadcrumb-title pe-3">Cliente</div>
+          <div className="breadcrumb-title pe-3">Usuario</div>
           <div className="ps-3">
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb mb-0 p-0">
@@ -89,7 +89,7 @@ export function Clientes() {
                   </a>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
-                  Lista de clientes
+                  Lista de usuarios
                 </li>
               </ol>
             </nav>
@@ -99,7 +99,7 @@ export function Clientes() {
           <input
             type="text"
             className="form-control"
-            placeholder="Buscar cliente..."
+            placeholder="Buscar usuario..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -114,28 +114,30 @@ export function Clientes() {
               <tr>
                 <th>Nombres</th>
                 <th>Apellidos</th>
+                <th>Usuario</th>
+                <th>Contraseña</th>
                 <th>DNI</th>
+                <th>CODIGO</th>
                 <th>Teléfono</th>
                 <th>Email</th>
-                <th>Estado Civil</th>
-                <th>Whatssap</th>
-                <th>Género</th>
-                <th>Dirección</th>
+                <th>Acceso</th>
+                <th>ROL</th>
                 <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
-              {filteredClientes.map((cliente, index) => (
+              {filteredUsuarios.map((usuario, index) => (
                 <tr key={index}>
-                  <td>{cliente.FirstName}</td>
-                  <td>{cliente.LastName}</td>
-                  <td>{cliente.Document}</td>
-                  <td>{cliente.PhoneNumber}</td>
-                  <td>{cliente.Email}</td>
-                  <td>{cliente.MaritalStatus}</td>
-                  <td>{cliente.Whatsapp}</td>
-                  <td>{cliente.Gender}</td>
-                  <td>{cliente.Address}</td>
+                  <td>{usuario.FirstName}</td>
+                  <td>{usuario.LastName}</td>
+                  <td>{usuario.Username}</td>
+                  <td>{usuario.Password}</td>
+                  <td>{usuario.Dni}</td>
+                  <td>{usuario.Code}</td>
+                  <td>{usuario.PhoneNumber}</td>
+                  <td>{usuario.Mail}</td>
+                  <td>{usuario.Access}</td>
+                  <td>{usuario.RoleId}</td>
                   <td>
                     <button
                       className="btn btn-primary btn-sm"
@@ -146,7 +148,7 @@ export function Clientes() {
                     </button>
                     <button
                       className="btn btn-danger btn-sm"
-                      onClick={() => eliminarCliente(cliente.IdClient || 0)}
+                      onClick={() => eliminarUsuario(usuario.IdUser || 0)}
                     >
                       <FaTrash />
                     </button>
@@ -157,7 +159,7 @@ export function Clientes() {
           </table>
         </div>
         <ul className="pagination justify-content-center">
-          {clientes.map((cliente, index) => (
+          {usuarios.map((usuario, index) => (
             <li key={index} className="page-item">
               <button onClick={() => paginate(index + 1)} className="page-link">
                 {index + 1}

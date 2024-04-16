@@ -5,6 +5,8 @@ import { Membresias } from "@/pages/membresia/Membresia";
 import ProtectedRoute from "@/components/ProtectedRoute ";
 import { Clientes } from "@/modules/clientes/pages/Cliente";
 import { NuevoCliente } from "@/modules/clientes/pages/NuevoCliente";
+import { User } from "@/modules/user/pages/User";
+import { NewUser } from "@/modules/user/pages/NewUser";
 
 const appRouter = [
   {
@@ -30,6 +32,14 @@ const appRouter = [
       {
         path: "/area/newcliente/",
         element: <NuevoCliente />,
+      },
+      {
+        path: "/area/usuarios/",
+        element: <User />,
+      },
+      {
+        path: "/area/newusuario/",
+        element: <NewUser />,
       },
       {
         path: "*",

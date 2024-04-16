@@ -5,13 +5,12 @@ import { login } from "../../../services/Login";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/AuthContext";
 
-
 export default function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { setUser } = useAuth();
-
+  const [showPassword, setShowPassword] = useState(false);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -29,19 +28,19 @@ export default function Login() {
       }
       if (!response.success) {
         Swal.fire({
-          title: 'Error!',
-          text: 'Usuario o contraseña icorrecta!',
-          icon: 'error',
-          confirmButtonText: 'Aceptar'
-        })
+          title: "Error!",
+          text: "Usuario o contraseña icorrecta!",
+          icon: "error",
+          confirmButtonText: "Aceptar",
+        });
       }
     } catch (error) {
       Swal.fire({
-        title: 'Error!',
-        text: 'Oppss, algo salio mal!',
-        icon: 'error',
-        confirmButtonText: 'Aceptar'
-      })
+        title: "Error!",
+        text: "Oppss, algo salio mal!",
+        icon: "error",
+        confirmButtonText: "Aceptar",
+      });
       console.log("Error al iniciar sesión");
     }
   };
@@ -112,7 +111,7 @@ export default function Login() {
                     </label>
                     <div className="input-group" id="show_hide_password">
                       <input
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         className="form-control border-end-0"
                         style={{ padding: "9px" }}
                         id="inputChoosePassword"
@@ -123,8 +122,13 @@ export default function Login() {
                       <a
                         href="javascript:;"
                         className="input-group-text bg-transparent"
+                        onClick={() => setShowPassword(!showPassword)}
                       >
-                        <i className="bx bx-hide" />
+                        {showPassword ? (
+                          <i className="bx bx-show" />
+                        ) : (
+                          <i className="bx bx-hide" />
+                        )}
                       </a>
                     </div>
                   </div>
