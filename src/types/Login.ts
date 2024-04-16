@@ -7,8 +7,8 @@ export interface User {
   LastName: string;
   PhoneNumber: string;
   Dni: string;
-  Access: string;
-  RoleId: string;
+  Access: boolean;
+  RoleId: number;
   Email: string;
   Birdhate: string;
   Note: string;

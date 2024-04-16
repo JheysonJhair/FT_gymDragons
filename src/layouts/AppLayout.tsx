@@ -247,30 +247,34 @@ function AppLayout() {
                 <div className="menu-title">Tablas</div>
               </a>
             </li>
-            <li className="menu-label">Configuración</li>
-            <li>
-              <a className="has-arrow" href="#">
-                <div className="parent-icon">
-                  <i className="bx bx-user" />
-                </div>
-                <div className="menu-title">Usuarios</div>
-              </a>
+            {user?.RoleId === 1 && (
+              <>
+                <li className="menu-label">Configuración</li>
+                <li>
+                  <a className="has-arrow" href="#">
+                    <div className="parent-icon">
+                      <i className="bx bx-user" />
+                    </div>
+                    <div className="menu-title">Usuarios</div>
+                  </a>
 
-              <ul>
-                <li>
-                  <NavLink to="/area/usuarios/">
-                    <i className="bx bx-radio-circle" />
-                    Todos
-                  </NavLink>
+                  <ul>
+                    <li>
+                      <NavLink to="/area/usuarios/">
+                        <i className="bx bx-radio-circle" />
+                        Todos
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/area/newusuario/">
+                        <i className="bx bx-radio-circle" />
+                        Nuevo usuario
+                      </NavLink>
+                    </li>
+                  </ul>
                 </li>
-                <li>
-                  <NavLink to="/area/newusuario/">
-                    <i className="bx bx-radio-circle" />
-                    Nuevo usuario
-                  </NavLink>
-                </li>
-              </ul>
-            </li>
+              </>
+            )}
             <li>
               <a href="https://themeforest.net/user/codervent" target="_blank">
                 <div className="parent-icon">
@@ -280,7 +284,6 @@ function AppLayout() {
               </a>
             </li>
           </ul>
-          {/*end navigation*/}
         </div>
         <header>
           <div className="topbar d-flex align-items-center">
@@ -309,9 +312,10 @@ function AppLayout() {
                         marginTop: "5px",
                       }}
                     >
-                      ADMINISTRADOR
+                      {user?.RoleId === 1 ? "ADMINISTRADOR" : "VENDEDOR"}
                     </h4>
                   </li>
+
                   <li className="nav-item dropdown dropdown-large">
                     <a
                       className="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative"
@@ -441,7 +445,9 @@ function AppLayout() {
                   />
                   <div className="user-info">
                     <p className="user-name mb-0">{user?.Username}</p>
-                    <p className="designattion mb-0">Usuario supremo</p>
+                    <p className="designattion mb-0">
+                      {user?.RoleId === 1 ? "Usuario supremo" : "Usuario"}
+                    </p>
                   </div>
                 </a>
                 <ul className="dropdown-menu dropdown-menu-end">
