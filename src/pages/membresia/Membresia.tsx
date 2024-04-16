@@ -1,10 +1,25 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-
+import {
+  obtenerClientePorID,
+  obtenerClientePorDNI,
+} from "../../services/Cliente";
+import { allCliente } from "../../types/Cliente";
 export function Membresias() {
+  const [cliente, setCliente] = useState<allCliente | null>(null);
+
+  const buscarClientePorDNI = async (dni: string) => {
+    const clienteObtenido = await obtenerClientePorDNI(dni);
+    setCliente(clienteObtenido !== null ? clienteObtenido : null);
+  };
+
+  const buscarClientePorID = async (id: number) => {
+    const clienteObtenido = await obtenerClientePorID(id);
+    setCliente(clienteObtenido !== null ? clienteObtenido : null);
+  };
   return (
     <div className="page-wrapper">
       <div className="page-content">
-        {/*breadcrumb*/}
         <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
           <div className="breadcrumb-title pe-3">Membresia y pagos</div>
           <div className="ps-3">
@@ -38,7 +53,10 @@ export function Membresias() {
               <div className="card-body">
                 <div className="row mb-3">
                   <div className="col-sm-6">
-                  <NavLink to="/area/newcliente/" className="btn btn-danger btn-block">
+                    <NavLink
+                      to="/area/newcliente/"
+                      className="btn btn-danger btn-block"
+                    >
                       <i className="bx bx-user-plus"></i> Nuevo cliente
                     </NavLink>
                   </div>
@@ -48,15 +66,20 @@ export function Membresias() {
                         type="text"
                         className="form-control"
                         placeholder="DNI"
+                        onChange={(e) => buscarClientePorDNI(e.target.value)}
                       />
                       <input
                         type="text"
                         className="form-control"
                         placeholder="Código"
+                        onChange={(e) =>
+                          buscarClientePorID(parseInt(e.target.value))
+                        }
                       />
                       <button
                         className="btn btn-outline-secondary"
                         type="button"
+                        disabled
                       >
                         <i className="bx bx-search"></i>
                       </button>
@@ -83,6 +106,7 @@ export function Membresias() {
                             className="form-control"
                             id="input49"
                             placeholder="Nombre"
+                            value={cliente?.FirstName || ""}
                           />
                         </div>
                       </div>
@@ -104,6 +128,7 @@ export function Membresias() {
                             className="form-control"
                             id="input49"
                             placeholder="Apellidos"
+                            value={cliente?.LastName || ""}
                           />
                         </div>
                       </div>
@@ -125,6 +150,7 @@ export function Membresias() {
                             className="form-control"
                             id="input50"
                             placeholder="Dni"
+                            value={cliente?.Document || ""}
                           />
                         </div>
                       </div>
@@ -146,6 +172,7 @@ export function Membresias() {
                             className="form-control"
                             id="input49"
                             placeholder="Dirección"
+                            value={cliente?.Address || ""}
                           />
                         </div>
                       </div>
@@ -172,11 +199,11 @@ export function Membresias() {
                       <span className="input-group-text">
                         <i className="bx bx-heart" />
                       </span>
-                      <select className="form-select" id="input53">
-                        <option >Seleccionar estado civil</option>
-                        <option value={1}>Soltero</option>
-                        <option value={2}>Casado</option>
-                        <option value={3}>Viudo</option>
+                      <select className="form-select" id="input53" value={cliente?.MaritalStatus || ""}>
+                        <option>Seleccionar estado civil</option>
+                        <option value="Soltero">Soltero</option>
+                        <option value="Casado">Casado</option>
+                        <option value="Viudo">Viudo</option>
                       </select>
                     </div>
                   </div>
@@ -190,10 +217,14 @@ export function Membresias() {
                       <span className="input-group-text">
                         <i className="bx bx-user-circle" />
                       </span>
-                      <select className="form-select" id="input53">
-                        <option >Seleccionar genero</option>
-                        <option value={1}>Masculino</option>
-                        <option value={2}>Femenino</option>
+                      <select
+                        className="form-select"
+                        id="inputGenero"
+                        value={cliente?.Gender || ""}
+                      >
+                        <option value="">Seleccionar genero</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
                       </select>
                     </div>
                   </div>
@@ -213,6 +244,7 @@ export function Membresias() {
                         className="form-control"
                         id="input51"
                         placeholder="Email"
+                        value={cliente?.Email || ""}
                       />
                     </div>
                   </div>
@@ -231,6 +263,7 @@ export function Membresias() {
                         className="form-control"
                         id="input50"
                         placeholder="Número"
+                        value={cliente?.PhoneNumber || ""}
                       />
                     </div>
                   </div>
@@ -300,11 +333,19 @@ export function Membresias() {
                         <i className="bx bx-package"></i>
                       </span>
                       <select className="form-select" id="input53">
-                        <option >Seleccionar paquete aquí</option>
-                        <option value={1}>PLAN UNIVERSITARIO <span>PRECIO: 180.00</span></option>
-                        <option value={2}>PUBLICO EN GENERAL PRECIO: 220.00</option>
-                        <option value={3}>INTERDIARIO O MEDIO MES PRECIO: 45.00</option>
-                        <option value={3}>PUBLICO EN GENERAL PRECIO: 90.00</option>
+                        <option>Seleccionar paquete aquí</option>
+                        <option value={1}>
+                          PLAN UNIVERSITARIO <span>PRECIO: 180.00</span>
+                        </option>
+                        <option value={2}>
+                          PUBLICO EN GENERAL PRECIO: 220.00
+                        </option>
+                        <option value={3}>
+                          INTERDIARIO O MEDIO MES PRECIO: 45.00
+                        </option>
+                        <option value={3}>
+                          PUBLICO EN GENERAL PRECIO: 90.00
+                        </option>
                       </select>
                     </div>
                   </div>
@@ -538,7 +579,7 @@ export function Membresias() {
                         <i className="bx bx-package"></i>
                       </span>
                       <select className="form-select" id="input53">
-                        <option >Seleccionar forma de pago</option>
+                        <option>Seleccionar forma de pago</option>
                         <option value={1}>paquete1</option>
                         <option value={2}>paquete 2</option>
                         <option value={3}>paquite 3</option>
@@ -556,7 +597,7 @@ export function Membresias() {
                         <i className="bx bx-package"></i>
                       </span>
                       <select className="form-select" id="input53">
-                        <option >Seleccionar comprobante</option>
+                        <option>Seleccionar comprobante</option>
                         <option value={1}>paquete1</option>
                         <option value={2}>paquete 2</option>
                         <option value={3}>paquite 3</option>
