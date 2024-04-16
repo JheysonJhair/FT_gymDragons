@@ -2,33 +2,100 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { crearCliente } from "../../../services/Cliente";
 import { Cliente } from "../../../types/Cliente";
+import { useNavigate } from "react-router-dom";
+import {
+  validateRequiredField,
+  validateDNI,
+  validateEmail,
+  validatePhoneNumber,
+} from "../../../utils/validations";
 
 export function NuevoCliente() {
+  const navigate = useNavigate();
   const [nuevoCliente, setNuevoCliente] = useState<Partial<Cliente>>({});
+  const [errorMessages, setErrorMessages] = useState({
+    firstName: "",
+    lastName: "",
+    address: "",
+    maritalStatus: "",
+    gender: "",
+    documentType: "",
+    document: "",
+    birdhate: "",
+    email: "",
+    phoneNumber: "",
+    whatsapp: "",
+  });
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
+
     setNuevoCliente((prevCliente) => ({
       ...prevCliente,
       [name]: value,
     }));
+
+    setErrorMessages((prevErrors) => ({
+      ...prevErrors,
+      [name]: validateField(name, value),
+    }));
   };
+
+  const validateField = (
+    name: string,
+    value: string | undefined
+  ): string | null => {
+    switch (name) {
+      case "document":
+        return validateDNI(value);
+      case "email":
+        return validateEmail(value);
+      case "phoneNumber":
+      case "whatsapp":
+        return validatePhoneNumber(value);
+      default:
+        return validateRequiredField(value);
+    }
+  };
+
+  type ClienteKey = keyof Partial<Cliente>;
 
   const handleRegistrarCliente = async () => {
     try {
+      const requiredFields: ClienteKey[] = [
+        "firstName",
+        "lastName",
+        "address",
+        "maritalStatus",
+        "gender",
+        "documentType",
+        "document",
+        "birdhate",
+        "email",
+        "phoneNumber",
+        "whatsapp",
+      ];
+      const invalidFields = requiredFields.filter(
+        (field) => !nuevoCliente[field]
+      );
+      if (invalidFields.length > 0) {
+        throw new Error("Por favor complete todos los campos obligatorios.");
+      }
+
       await crearCliente(nuevoCliente);
       Swal.fire({
         title: "Correcto!",
-        text: "El cliente se registro correctamente!",
+        text: "El cliente se registró correctamente!",
         icon: "success",
         confirmButtonText: "Aceptar",
       });
+      navigate("/area/clientes/");
     } catch (error) {
       Swal.fire({
         title: "Error!",
-        text: "Oppss, algo salio mal!",
+        text: "Complete todos los campos",
         icon: "error",
         confirmButtonText: "Aceptar",
       });
@@ -70,12 +137,19 @@ export function NuevoCliente() {
                     </span>
                     <input
                       type="text"
-                      className="form-control"
+                      className={`form-control ${
+                        errorMessages.firstName && "is-invalid"
+                      }`}
                       id="input49"
                       placeholder="Nombre"
                       name="firstName"
                       onChange={handleInputChange}
                     />
+                    {errorMessages.firstName && (
+                      <div className="invalid-feedback">
+                        {errorMessages.firstName}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -90,12 +164,19 @@ export function NuevoCliente() {
                     </span>
                     <input
                       type="text"
-                      className="form-control"
+                      className={`form-control ${
+                        errorMessages.lastName && "is-invalid"
+                      }`}
                       id="input49"
                       placeholder="Apellidos"
                       name="lastName"
                       onChange={handleInputChange}
                     />
+                    {errorMessages.lastName && (
+                      <div className="invalid-feedback">
+                        {errorMessages.lastName}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -111,12 +192,19 @@ export function NuevoCliente() {
                     </span>
                     <input
                       type="text"
-                      className="form-control"
+                      className={`form-control ${
+                        errorMessages.address && "is-invalid"
+                      }`}
                       id="input49"
                       placeholder="Dirección"
                       name="address"
                       onChange={handleInputChange}
                     />
+                    {errorMessages.address && (
+                      <div className="invalid-feedback">
+                        {errorMessages.address}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -130,7 +218,9 @@ export function NuevoCliente() {
                       <i className="bx bx-heart" />
                     </span>
                     <select
-                      className="form-select"
+                      className={`form-select ${
+                        errorMessages.maritalStatus && "is-invalid"
+                      }`}
                       name="maritalStatus"
                       onChange={handleInputChange}
                       id="input53"
@@ -140,6 +230,11 @@ export function NuevoCliente() {
                       <option value="Casado">Casado</option>
                       <option value="Viudo">Viudo</option>
                     </select>
+                    {errorMessages.maritalStatus && (
+                      <div className="invalid-feedback">
+                        {errorMessages.maritalStatus}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -153,7 +248,9 @@ export function NuevoCliente() {
                       <i className="bx bx-user-circle" />
                     </span>
                     <select
-                      className="form-select"
+                      className={`form-select ${
+                        errorMessages.gender && "is-invalid"
+                      }`}
                       name="gender"
                       onChange={handleInputChange}
                       id="input53"
@@ -162,6 +259,11 @@ export function NuevoCliente() {
                       <option value="Masculino">Masculino</option>
                       <option value="Femenino">Femenino</option>
                     </select>
+                    {errorMessages.gender && (
+                      <div className="invalid-feedback">
+                        {errorMessages.gender}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -175,7 +277,9 @@ export function NuevoCliente() {
                       <i className="bx bx-globe" />
                     </span>
                     <select
-                      className="form-select"
+                      className={`form-select ${
+                        errorMessages.documentType && "is-invalid"
+                      }`}
                       name="documentType"
                       onChange={handleInputChange}
                       id="input53"
@@ -184,6 +288,11 @@ export function NuevoCliente() {
                       <option value="dni">DNI</option>
                       <option value="carnet">Carnet</option>
                     </select>
+                    {errorMessages.documentType && (
+                      <div className="invalid-feedback">
+                        {errorMessages.documentType}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -198,12 +307,19 @@ export function NuevoCliente() {
                     </span>
                     <input
                       type="text"
-                      className="form-control"
+                      className={`form-control ${
+                        errorMessages.document && "is-invalid"
+                      }`}
                       id="input50"
                       placeholder="Dni"
                       name="document"
                       onChange={handleInputChange}
                     />
+                    {errorMessages.document && (
+                      <div className="invalid-feedback">
+                        {errorMessages.document}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -220,7 +336,7 @@ export function NuevoCliente() {
                       type="date"
                       className="form-control"
                       placeholder="Fecha de Inicio"
-                      name="Birdhate"
+                      name="birdhate"
                       onChange={handleInputChange}
                     />
                   </div>
@@ -247,12 +363,19 @@ export function NuevoCliente() {
                     </span>
                     <input
                       type="text"
-                      className="form-control"
+                      className={`form-control ${
+                        errorMessages.email && "is-invalid"
+                      }`}
                       id="input51"
                       placeholder="Email"
                       name="email"
                       onChange={handleInputChange}
                     />
+                    {errorMessages.email && (
+                      <div className="invalid-feedback">
+                        {errorMessages.email}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -267,12 +390,19 @@ export function NuevoCliente() {
                     </span>
                     <input
                       type="text"
-                      className="form-control"
+                      className={`form-control ${
+                        errorMessages.phoneNumber && "is-invalid"
+                      }`}
                       id="input50"
                       placeholder="Número de teléfono"
                       name="phoneNumber"
                       onChange={handleInputChange}
                     />
+                    {errorMessages.phoneNumber && (
+                      <div className="invalid-feedback">
+                        {errorMessages.phoneNumber}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -287,12 +417,19 @@ export function NuevoCliente() {
                     </span>
                     <input
                       type="text"
-                      className="form-control"
+                      className={`form-control ${
+                        errorMessages.whatsapp && "is-invalid"
+                      }`}
                       id="input50"
                       placeholder="Número de whatssap"
                       name="whatsapp"
                       onChange={handleInputChange}
                     />
+                    {errorMessages.whatsapp && (
+                      <div className="invalid-feedback">
+                        {errorMessages.whatsapp}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

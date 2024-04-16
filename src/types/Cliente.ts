@@ -1,4 +1,21 @@
 export interface Cliente {
+  idClient?: string;
+  code: string;
+  username: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  document: string;
+  documentType:string;
+  birdhate: string;
+  maritalStatus: string;
+  gender: string;
+  address: string;
+  whatsapp:string;
+  email: string;
+}
+
+export interface allCliente {
   IdClient?: string;
   Code: string;
   Username: string;
