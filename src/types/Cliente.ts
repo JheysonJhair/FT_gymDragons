@@ -1,5 +1,5 @@
 export interface Cliente {
-  idClient?: string;
+  idClient?: number;
   code: string;
   username: string;
   firstName: string;
@@ -16,7 +16,7 @@ export interface Cliente {
 }
 
 export interface allCliente {
-  IdClient?: string;
+  IdClient?: number;
   Code: string;
   Username: string;
   FirstName: string;

@@ -64,7 +64,6 @@ function AppLayout() {
               <i className="bx bx-arrow-back red-text" />
             </div>
           </div>
-          {/*navigation*/}
           <ul className="metismenu" id="menu">
             <li className="">
               <NavLink to="/">
@@ -130,13 +129,6 @@ function AppLayout() {
                     <i className="bx bx-radio-circle" />
                     Todos
                   </NavLink>
-                </li>
-                <li>
-                  {" "}
-                  <a href="component-accordions.html">
-                    <i className="bx bx-radio-circle" />
-                    Detalle de clientes
-                  </a>
                 </li>
                 <li>
                 <NavLink to="/area/newcliente/">

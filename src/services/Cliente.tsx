@@ -1,12 +1,12 @@
-import { Cliente } from "../types/Cliente";
+import { allCliente, Cliente } from "../types/Cliente";
 
 interface ApiResponse {
   msg: string;
   success: boolean;
-  data: Cliente[];
+  data: allCliente[];
 }
 
-export async function obtenerClientes(): Promise<Cliente[]> {
+export async function obtenerClientes(): Promise<allCliente[]> {
   try {
     const response = await fetch("https://zonafitbk.ccontrolz.com/api/client");
     if (!response.ok) {
@@ -23,7 +23,6 @@ export async function obtenerClientes(): Promise<Cliente[]> {
   }
 }
 
-
 export async function crearCliente(cliente: Partial<Cliente>): Promise<void> {
   try {
     const response = await fetch('https://zonafitbk.ccontrolz.com/api/client', {
@@ -38,5 +37,19 @@ export async function crearCliente(cliente: Partial<Cliente>): Promise<void> {
     }
   } catch (error) {
     throw new Error('Error al crear el cliente: ' + error);
+  }
+}
+
+export async function eliminarCliente(clienteId: number): Promise<void> {
+  try {
+    const url = `https://zonafitbk.ccontrolz.com/api/client/${clienteId}`;
+    const response = await fetch(url, {
+      method: 'DELETE',
+    });
+    if (!response.ok) {
+      throw new Error('Error al eliminar el cliente');
+    }
+  } catch (error) {
+    throw new Error('Error al eliminar el cliente: ' + error);
   }
 }

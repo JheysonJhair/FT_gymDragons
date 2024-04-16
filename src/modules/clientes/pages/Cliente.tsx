@@ -1,23 +1,91 @@
 import React, { useState, useEffect } from "react";
 import { obtenerClientes } from "../../../services/Cliente";
-import { Cliente } from "../../../types/Cliente";
+import { allCliente } from "../../../types/Cliente";
+import { FaEdit, FaTrash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 export function Clientes() {
-  const [clientes, setClientes] = useState<Cliente[]>([]);
+  const [clientes, setClientes] = useState<allCliente[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [clientesPerPage] = useState(9);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await obtenerClientes();
-      console.log(data);
       setClientes(data);
     };
 
     fetchData();
   }, []);
 
+  const indexOfLastCliente = currentPage * clientesPerPage;
+  const indexOfFirstCliente = indexOfLastCliente - clientesPerPage;
+  const currentClientes = clientes.slice(
+    indexOfFirstCliente,
+    indexOfLastCliente
+  );
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  const filteredClientes = currentClientes.filter((cliente) =>
+    Object.values(cliente).some((value) =>
+      value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
+
+  const eliminarCliente = async (id: number) => {
+    try {
+      const confirmacion = await Swal.fire({
+        title: "¿Estás seguro?",
+        text: "¡No podrás revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, eliminarlo",
+        cancelButtonText: "Cancelar"
+      });
+
+      if (confirmacion.isConfirmed) {
+        const response = await fetch(`https://zonafitbk.ccontrolz.com/api/client/${id}`, {
+          method: 'DELETE',
+        });
+        if (!response.ok) {
+          throw new Error('Error al eliminar el cliente');
+        }
+
+        const updatedClientes = clientes.filter((cliente) => cliente.IdClient !== id);
+        setClientes(updatedClientes);
+
+        await Swal.fire(
+          "¡Eliminado!",
+          "Tu cliente ha sido eliminado.",
+          "success"
+        );
+      }
+    } catch (error) {
+      console.error('Error al eliminar el cliente:', error);
+      Swal.fire(
+        "Error",
+        "Hubo un error al eliminar el cliente",
+        "error"
+      );
+    }
+  };
+
   return (
     <div className="page-wrapper">
       <div className="page-content">
+        <div className="mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Buscar cliente..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
         <div className="table-responsive">
           <table
             id="example"
@@ -35,10 +103,11 @@ export function Clientes() {
                 <th>Whatssap</th>
                 <th>Género</th>
                 <th>Dirección</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
-              {clientes.map((cliente, index) => (
+              {filteredClientes.map((cliente, index) => (
                 <tr key={index}>
                   <td>{cliente.FirstName}</td>
                   <td>{cliente.LastName}</td>
@@ -49,11 +118,35 @@ export function Clientes() {
                   <td>{cliente.Whatsapp}</td>
                   <td>{cliente.Gender}</td>
                   <td>{cliente.Address}</td>
+                  <td>
+                    <button
+                      className="btn btn-primary btn-sm"
+                      style={{ marginRight: '6px' }}
+                      title="Editar"
+                    >
+                      <FaEdit />
+                    </button>
+                    <button
+                      className="btn btn-danger btn-sm"
+                      onClick={() => eliminarCliente(cliente.IdClient || 0)}
+                    >
+                      <FaTrash />
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+        <ul className="pagination justify-content-center">
+          {clientes.map((cliente, index) => (
+            <li key={index} className="page-item">
+              <button onClick={() => paginate(index + 1)} className="page-link">
+                {index + 1}
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
