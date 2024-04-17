@@ -7,6 +7,10 @@ import { Clientes } from "@/modules/clientes/pages/Cliente";
 import { NuevoCliente } from "@/modules/clientes/pages/NuevoCliente";
 import { User } from "@/modules/user/pages/User";
 import { NewUser } from "@/modules/user/pages/NewUser";
+import { Productos } from "@/modules/products/pages/Products";
+import { NuevoProducto } from "@/modules/products/pages/NewProduct";
+import { DetallesProducto } from "@/modules/products/pages/DetailProduct";
+import { MarcarAsistencia } from "@/modules/asistencias/pages/MarcarAsistencia";
 
 const appRouter = [
   {
@@ -32,6 +36,26 @@ const appRouter = [
       {
         path: "/area/newcliente/",
         element: <NuevoCliente />,
+      },
+      {
+        path: "/area/productos/",
+        element: <Productos />,
+      },
+      {
+        path: "/area/newproducto/",
+        element: <NuevoProducto />,
+      },
+      {
+        path: "/area/detailproducto/",
+        element: <DetallesProducto />,
+      },
+      {
+        path: "/area/marcarasistencia/",
+        element: <MarcarAsistencia />,
+      },
+      {
+        path: "/area/detailproducto/",
+        element: <DetallesProducto />,
       },
       {
         path: "/area/usuarios/",

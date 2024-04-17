@@ -92,25 +92,22 @@ function AppLayout() {
 
               <ul>
                 <li>
-                  {" "}
-                  <a href="ecommerce-products.html">
+                  <NavLink to="/area/productos/">
                     <i className="bx bx-radio-circle" />
                     Productos
-                  </a>
+                  </NavLink>
                 </li>
                 <li>
-                  {" "}
-                  <a href="ecommerce-products-details.html">
+                  <NavLink to="/area/detailproducto/">
                     <i className="bx bx-radio-circle" />
-                    Detalle de productos
-                  </a>
+                    Detalle de producto
+                  </NavLink>
                 </li>
                 <li>
-                  {" "}
-                  <a href="ecommerce-add-new-products.html">
+                  <NavLink to="/area/newproducto/">
                     <i className="bx bx-radio-circle" />
                     Nuevo producto
-                  </a>
+                  </NavLink>
                 </li>
               </ul>
             </li>
@@ -198,18 +195,16 @@ function AppLayout() {
 
               <ul>
                 <li>
-                  {" "}
-                  <a href="form-elements.html">
+                  <NavLink to="/area/marcarasistencia/">
                     <i className="bx bx-radio-circle" />
-                    Asistencias
-                  </a>
+                    Marcar asistencia
+                  </NavLink>
                 </li>
                 <li>
-                  {" "}
-                  <a href="form-input-group.html">
+                  <NavLink to="/area/asistencias/">
                     <i className="bx bx-radio-circle" />
-                    Ultimos clientes
-                  </a>
+                    Asistencias
+                  </NavLink>
                 </li>
               </ul>
             </li>
