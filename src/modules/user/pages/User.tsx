@@ -49,7 +49,7 @@ export function User() {
 
       if (confirmacion.isConfirmed) {
         const response = await fetch(
-          `https://zonafitbk.ccontrolz.com/api/users/${id}`,
+          `https://zonafitbk.ccontrolz.com/api/user/${id}`,
           {
             method: "DELETE",
           }
@@ -130,7 +130,7 @@ export function User() {
                 <tr key={index}>
                   <td>{usuario.FirstName}</td>
                   <td>{usuario.LastName}</td>
-                  <td>{usuario.Username}</td>
+                  <td>{usuario.UserName}</td>
                   <td>{usuario.Password}</td>
                   <td>{usuario.Dni}</td>
                   <td>{usuario.Code}</td>

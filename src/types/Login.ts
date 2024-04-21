@@ -1,7 +1,7 @@
 export interface User {
-  IdUser?: string;
-  Code: string;
-  Username: string;
+  IdUser?: number;
+  Code?: string;
+  UserName: string;
   Password: string;
   FirstName: string;
   LastName: string;
@@ -9,14 +9,13 @@ export interface User {
   Dni: string;
   Access: boolean;
   RoleId: number;
-  Email: string;
+  Mail: string;
   Birdhate: string;
-  Note: string;
   Image: string;
 }
 export interface Login {
-  username: string;
-  password: string;
+  UserName: string;
+  Password: string;
 }
 
 export interface AuthContextType {

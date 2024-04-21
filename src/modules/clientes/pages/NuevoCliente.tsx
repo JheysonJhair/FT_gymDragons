@@ -14,21 +14,24 @@ export function NuevoCliente() {
   const navigate = useNavigate();
   const [nuevoCliente, setNuevoCliente] = useState<Partial<Cliente>>({});
   const [errorMessages, setErrorMessages] = useState({
-    firstName: "",
-    lastName: "",
-    address: "",
-    maritalStatus: "",
-    gender: "",
-    documentType: "",
-    document: "",
-    birdhate: "",
-    email: "",
-    phoneNumber: "",
-    whatsapp: "",
+    FirstName: "",
+    LastName: "",
+    Address: "",
+    MaritalStatus: "",
+    Gender: "",
+    DocumentType: "",
+    Document: "",
+    BirthDate: "",
+    Mail: "",
+    PhoneNumber: "",
+    Whatsapp: "",
+    Note: "",
   });
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     const { name, value } = e.target;
 
@@ -48,12 +51,12 @@ export function NuevoCliente() {
     value: string | undefined
   ): string | null => {
     switch (name) {
-      case "document":
+      case "Document":
         return validateDNI(value);
-      case "email":
+      case "Mail":
         return validateEmail(value);
-      case "phoneNumber":
-      case "whatsapp":
+      case "PhoneNumber":
+      case "Whatsapp":
         return validatePhoneNumber(value);
       default:
         return validateRequiredField(value);
@@ -65,17 +68,17 @@ export function NuevoCliente() {
   const handleRegistrarCliente = async () => {
     try {
       const requiredFields: ClienteKey[] = [
-        "firstName",
-        "lastName",
-        "address",
-        "maritalStatus",
-        "gender",
-        "documentType",
-        "document",
-        "birdhate",
-        "email",
-        "phoneNumber",
-        "whatsapp",
+        "FirstName",
+        "LastName",
+        "Address",
+        "MaritalStatus",
+        "Gender",
+        "DocumentType",
+        "Document",
+        "BirthDate",
+        "Mail",
+        "PhoneNumber",
+        "Whatsapp",
       ];
       const invalidFields = requiredFields.filter(
         (field) => !nuevoCliente[field]
@@ -127,7 +130,7 @@ export function NuevoCliente() {
           <div className="row">
             <div className="col-sm-6">
               <div className="row mb-3">
-                <label htmlFor="input49" className="col-sm-4 col-form-label">
+                <label htmlFor="input01" className="col-sm-4 col-form-label">
                   Nombres
                 </label>
                 <div className="col-sm-8">
@@ -138,23 +141,23 @@ export function NuevoCliente() {
                     <input
                       type="text"
                       className={`form-control ${
-                        errorMessages.firstName && "is-invalid"
+                        errorMessages.FirstName && "is-invalid"
                       }`}
-                      id="input49"
+                      id="input01"
                       placeholder="Nombre"
-                      name="firstName"
+                      name="FirstName"
                       onChange={handleInputChange}
                     />
-                    {errorMessages.firstName && (
+                    {errorMessages.FirstName && (
                       <div className="invalid-feedback">
-                        {errorMessages.firstName}
+                        {errorMessages.FirstName}
                       </div>
                     )}
                   </div>
                 </div>
               </div>
               <div className="row mb-3">
-                <label htmlFor="input49" className="col-sm-4 col-form-label">
+                <label htmlFor="input02" className="col-sm-4 col-form-label">
                   Apellidos
                 </label>
                 <div className="col-sm-8">
@@ -165,16 +168,16 @@ export function NuevoCliente() {
                     <input
                       type="text"
                       className={`form-control ${
-                        errorMessages.lastName && "is-invalid"
+                        errorMessages.LastName && "is-invalid"
                       }`}
-                      id="input49"
+                      id="input02"
                       placeholder="Apellidos"
-                      name="lastName"
+                      name="LastName"
                       onChange={handleInputChange}
                     />
-                    {errorMessages.lastName && (
+                    {errorMessages.LastName && (
                       <div className="invalid-feedback">
-                        {errorMessages.lastName}
+                        {errorMessages.LastName}
                       </div>
                     )}
                   </div>
@@ -182,7 +185,7 @@ export function NuevoCliente() {
               </div>
 
               <div className="row mb-3">
-                <label htmlFor="input49" className="col-sm-4 col-form-label">
+                <label htmlFor="input03" className="col-sm-4 col-form-label">
                   Direccion
                 </label>
                 <div className="col-sm-8">
@@ -193,23 +196,23 @@ export function NuevoCliente() {
                     <input
                       type="text"
                       className={`form-control ${
-                        errorMessages.address && "is-invalid"
+                        errorMessages.Address && "is-invalid"
                       }`}
-                      id="input49"
+                      id="input03"
                       placeholder="Dirección"
-                      name="address"
+                      name="Address"
                       onChange={handleInputChange}
                     />
-                    {errorMessages.address && (
+                    {errorMessages.Address && (
                       <div className="invalid-feedback">
-                        {errorMessages.address}
+                        {errorMessages.Address}
                       </div>
                     )}
                   </div>
                 </div>
               </div>
               <div className="row mb-3">
-                <label htmlFor="input53" className="col-sm-4 col-form-label">
+                <label htmlFor="input04" className="col-sm-4 col-form-label">
                   Estado civil
                 </label>
                 <div className="col-sm-8">
@@ -219,27 +222,27 @@ export function NuevoCliente() {
                     </span>
                     <select
                       className={`form-select ${
-                        errorMessages.maritalStatus && "is-invalid"
+                        errorMessages.MaritalStatus && "is-invalid"
                       }`}
-                      name="maritalStatus"
+                      name="MaritalStatus"
                       onChange={handleInputChange}
-                      id="input53"
+                      id="input04"
                     >
                       <option>Seleccionar estado civil</option>
                       <option value="Soltero">Soltero</option>
                       <option value="Casado">Casado</option>
                       <option value="Viudo">Viudo</option>
                     </select>
-                    {errorMessages.maritalStatus && (
+                    {errorMessages.MaritalStatus && (
                       <div className="invalid-feedback">
-                        {errorMessages.maritalStatus}
+                        {errorMessages.MaritalStatus}
                       </div>
                     )}
                   </div>
                 </div>
               </div>
               <div className="row mb-3">
-                <label htmlFor="input53" className="col-sm-4 col-form-label">
+                <label htmlFor="input05" className="col-sm-4 col-form-label">
                   Género
                 </label>
                 <div className="col-sm-8">
@@ -249,26 +252,26 @@ export function NuevoCliente() {
                     </span>
                     <select
                       className={`form-select ${
-                        errorMessages.gender && "is-invalid"
+                        errorMessages.Gender && "is-invalid"
                       }`}
-                      name="gender"
+                      name="Gender"
                       onChange={handleInputChange}
-                      id="input53"
+                      id="input05"
                     >
                       <option>Seleccionar genero</option>
                       <option value="Masculino">Masculino</option>
                       <option value="Femenino">Femenino</option>
                     </select>
-                    {errorMessages.gender && (
+                    {errorMessages.Gender && (
                       <div className="invalid-feedback">
-                        {errorMessages.gender}
+                        {errorMessages.Gender}
                       </div>
                     )}
                   </div>
                 </div>
               </div>
               <div className="row mb-3">
-                <label htmlFor="input53" className="col-sm-4 col-form-label">
+                <label htmlFor="input06" className="col-sm-4 col-form-label">
                   Tipo de documento
                 </label>
                 <div className="col-sm-8">
@@ -278,26 +281,26 @@ export function NuevoCliente() {
                     </span>
                     <select
                       className={`form-select ${
-                        errorMessages.documentType && "is-invalid"
+                        errorMessages.DocumentType && "is-invalid"
                       }`}
-                      name="documentType"
+                      name="DocumentType"
                       onChange={handleInputChange}
-                      id="input53"
+                      id="input06"
                     >
                       <option>Seleccionar tipo</option>
                       <option value="dni">DNI</option>
                       <option value="carnet">Carnet</option>
                     </select>
-                    {errorMessages.documentType && (
+                    {errorMessages.DocumentType && (
                       <div className="invalid-feedback">
-                        {errorMessages.documentType}
+                        {errorMessages.DocumentType}
                       </div>
                     )}
                   </div>
                 </div>
               </div>
               <div className="row mb-3">
-                <label htmlFor="input50" className="col-sm-4 col-form-label">
+                <label htmlFor="input07" className="col-sm-4 col-form-label">
                   DNI
                 </label>
                 <div className="col-sm-8">
@@ -308,23 +311,23 @@ export function NuevoCliente() {
                     <input
                       type="text"
                       className={`form-control ${
-                        errorMessages.document && "is-invalid"
+                        errorMessages.Document && "is-invalid"
                       }`}
-                      id="input50"
+                      id="input07"
                       placeholder="Dni"
-                      name="document"
+                      name="Document"
                       onChange={handleInputChange}
                     />
-                    {errorMessages.document && (
+                    {errorMessages.Document && (
                       <div className="invalid-feedback">
-                        {errorMessages.document}
+                        {errorMessages.Document}
                       </div>
                     )}
                   </div>
                 </div>
               </div>
               <div className="row mb-3">
-                <label htmlFor="input50" className="col-sm-4 col-form-label">
+                <label htmlFor="input08" className="col-sm-4 col-form-label">
                   Fecha de nacimiento
                 </label>
                 <div className="col-sm-8">
@@ -335,8 +338,8 @@ export function NuevoCliente() {
                     <input
                       type="date"
                       className="form-control"
-                      placeholder="Fecha de Inicio"
-                      name="birdhate"
+                      placeholder="Fecha de Nacimiento"
+                      name="BirthDate"
                       onChange={handleInputChange}
                     />
                   </div>
@@ -349,11 +352,11 @@ export function NuevoCliente() {
                   src="../../assets/images/avatars/avatar-1.png"
                   alt="Admin"
                   className=" p-1 bg-danger"
-                  width={220}
+                  width={180}
                 />
               </div>
               <div className="row mb-3">
-                <label htmlFor="input51" className="col-sm-4 col-form-label">
+                <label htmlFor="input09" className="col-sm-4 col-form-label">
                   Correo Electrónico
                 </label>
                 <div className="col-sm-8">
@@ -364,23 +367,23 @@ export function NuevoCliente() {
                     <input
                       type="text"
                       className={`form-control ${
-                        errorMessages.email && "is-invalid"
+                        errorMessages.Mail && "is-invalid"
                       }`}
-                      id="input51"
+                      id="input09"
                       placeholder="Email"
-                      name="email"
+                      name="Mail"
                       onChange={handleInputChange}
                     />
-                    {errorMessages.email && (
+                    {errorMessages.Mail && (
                       <div className="invalid-feedback">
-                        {errorMessages.email}
+                        {errorMessages.Mail}
                       </div>
                     )}
                   </div>
                 </div>
               </div>
               <div className="row mb-3">
-                <label htmlFor="input50" className="col-sm-4 col-form-label">
+                <label htmlFor="input10" className="col-sm-4 col-form-label">
                   Telefono
                 </label>
                 <div className="col-sm-8">
@@ -391,23 +394,23 @@ export function NuevoCliente() {
                     <input
                       type="text"
                       className={`form-control ${
-                        errorMessages.phoneNumber && "is-invalid"
+                        errorMessages.PhoneNumber && "is-invalid"
                       }`}
-                      id="input50"
+                      id="input10"
                       placeholder="Número de teléfono"
-                      name="phoneNumber"
+                      name="PhoneNumber"
                       onChange={handleInputChange}
                     />
-                    {errorMessages.phoneNumber && (
+                    {errorMessages.PhoneNumber && (
                       <div className="invalid-feedback">
-                        {errorMessages.phoneNumber}
+                        {errorMessages.PhoneNumber}
                       </div>
                     )}
                   </div>
                 </div>
               </div>
               <div className="row mb-3">
-                <label htmlFor="input50" className="col-sm-4 col-form-label">
+                <label htmlFor="input11" className="col-sm-4 col-form-label">
                   Whatssap
                 </label>
                 <div className="col-sm-8">
@@ -418,23 +421,51 @@ export function NuevoCliente() {
                     <input
                       type="text"
                       className={`form-control ${
-                        errorMessages.whatsapp && "is-invalid"
+                        errorMessages.Whatsapp && "is-invalid"
                       }`}
-                      id="input50"
+                      id="input11"
                       placeholder="Número de whatssap"
-                      name="whatsapp"
+                      name="Whatsapp"
                       onChange={handleInputChange}
                     />
-                    {errorMessages.whatsapp && (
+                    {errorMessages.Whatsapp && (
                       <div className="invalid-feedback">
-                        {errorMessages.whatsapp}
+                        {errorMessages.Whatsapp}
                       </div>
                     )}
                   </div>
                 </div>
               </div>
+              <div className="row mb-3">
+                <label htmlFor="input12" className="col-sm-4 col-form-label">
+                  Nota <span style={{ color: "#999" }}>(Opcional)</span>
+                </label>
+
+                <div className="col-sm-8">
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="bx bx-user" />
+                    </span>
+                    <textarea
+                      className={`form-control ${
+                        errorMessages.Note && "is-invalid"
+                      }`}
+                      id="input12"
+                      placeholder="Ingrese alguna nota..."
+                      name="Note"
+                      onChange={handleInputChange}
+                    ></textarea>
+                    {errorMessages.Note && (
+                      <div className="invalid-feedback">
+                        {errorMessages.Note}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
               <div className="row mt-4">
-                <div className="col">{/* Contenido */}</div>
+                <div className="col"></div>
                 <div className="col-auto ml-auto">
                   <button
                     className="btn btn-danger btn-block"

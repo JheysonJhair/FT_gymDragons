@@ -5,32 +5,27 @@ export function NuevoProducto() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]; // Obtener el primer archivo de la lista de archivos seleccionados
+    const file = event.target.files?.[0];
     const imagePreview = document.getElementById(
       "image-preview"
     ) as HTMLImageElement;
 
-    // Verificar si se cargó un archivo
     if (file) {
       const reader = new FileReader();
 
-      // Configurar el evento onload del lector de archivos
       reader.onload = function (e) {
-        // Mostrar la vista previa de la imagen
         if (typeof e.target?.result === "string") {
           imagePreview.src = e.target.result;
-          imagePreview.style.display = "block"; // Mostrar la imagen
+          imagePreview.style.display = "block";
         }
       };
 
-      // Leer el contenido del archivo como URL de datos
       reader.readAsDataURL(file);
     }
   };
   return (
     <div className="page-wrapper">
       <div className="page-content">
-        {/*breadcrumb*/}
         <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
           <div className="breadcrumb-title pe-3">eCommerce</div>
           <div className="ps-3">
@@ -79,7 +74,6 @@ export function NuevoProducto() {
             </div>
           </div>
         </div>
-        {/*end breadcrumb*/}
         <div className="card">
           <div className="card-body p-4">
             <h5 className="card-title">Add New Product</h5>
@@ -255,7 +249,6 @@ export function NuevoProducto() {
                   </div>
                 </div>
               </div>
-              {/*end row*/}
             </div>
           </div>
         </div>

@@ -4,10 +4,10 @@ import {
   obtenerClientePorID,
   obtenerClientePorDNI,
 } from "../../services/Cliente";
-import { allCliente } from "../../types/Cliente";
+import { Cliente } from "../../types/Cliente";
 
 export function Membresias() {
-  const [cliente, setCliente] = useState<allCliente | null>(null);
+  const [cliente, setCliente] = useState<Cliente | null>(null);
 
   const buscarClientePorDNI = async (dni: string) => {
     const clienteObtenido = await obtenerClientePorDNI(dni);
@@ -40,7 +40,7 @@ export function Membresias() {
         </div>
 
         <div className="row">
-          <div className="col-12 col-lg-7 d-flex">
+          <div className="col-12 col-lg-6 d-flex">
             <div className="card radius-10 w-100">
               <div className="card-header">
                 <div className="d-flex align-items-center">
@@ -89,10 +89,10 @@ export function Membresias() {
                 </div>
 
                 <div className="row">
-                  <div className="col-sm-7">
+                  <div className="col-sm-8">
                     <div className="row mb-3">
                       <label
-                        htmlFor="input49"
+                        htmlFor="input01"
                         className="col-sm-3 col-form-label"
                       >
                         Nombres
@@ -105,7 +105,7 @@ export function Membresias() {
                           <input
                             type="text"
                             className="form-control"
-                            id="input49"
+                            id="input01"
                             placeholder="Nombre"
                             value={cliente?.FirstName || ""}
                           />
@@ -114,7 +114,7 @@ export function Membresias() {
                     </div>
                     <div className="row mb-3">
                       <label
-                        htmlFor="input49"
+                        htmlFor="input02"
                         className="col-sm-3 col-form-label"
                       >
                         Apellidos
@@ -127,7 +127,7 @@ export function Membresias() {
                           <input
                             type="text"
                             className="form-control"
-                            id="input49"
+                            id="input02"
                             placeholder="Apellidos"
                             value={cliente?.LastName || ""}
                           />
@@ -136,7 +136,7 @@ export function Membresias() {
                     </div>
                     <div className="row mb-3">
                       <label
-                        htmlFor="input50"
+                        htmlFor="input03"
                         className="col-sm-3 col-form-label"
                       >
                         DNI
@@ -149,7 +149,7 @@ export function Membresias() {
                           <input
                             type="text"
                             className="form-control"
-                            id="input50"
+                            id="input03"
                             placeholder="Dni"
                             value={cliente?.Document || ""}
                           />
@@ -158,7 +158,7 @@ export function Membresias() {
                     </div>
                     <div className="row mb-3">
                       <label
-                        htmlFor="input49"
+                        htmlFor="input04"
                         className="col-sm-3 col-form-label"
                       >
                         Direccion
@@ -171,7 +171,7 @@ export function Membresias() {
                           <input
                             type="text"
                             className="form-control"
-                            id="input49"
+                            id="input04"
                             placeholder="Dirección"
                             value={cliente?.Address || ""}
                           />
@@ -179,30 +179,30 @@ export function Membresias() {
                       </div>
                     </div>
                   </div>
-                  <div className="col-sm-5">
+                  <div className="col-sm-4">
                     <div className="d-flex flex-column align-items-center text-center">
                       <img
                         src="../../assets/images/avatars/avatar-1.png"
                         alt="Admin"
                         className=" p-1 bg-danger"
-                        width={190}
+                        width={180}
                       />
                     </div>
                   </div>
                 </div>
 
                 <div className="row mb-3">
-                  <label htmlFor="input53" className="col-sm-3 col-form-label">
+                  <label htmlFor="input05" className="col-sm-4 col-form-label">
                     Estado civil
                   </label>
-                  <div className="col-sm-9">
+                  <div className="col-sm-8">
                     <div className="input-group">
                       <span className="input-group-text">
                         <i className="bx bx-heart" />
                       </span>
                       <select
                         className="form-select"
-                        id="input53"
+                        id="input05"
                         value={cliente?.MaritalStatus || ""}
                       >
                         <option>Seleccionar estado civil</option>
@@ -214,17 +214,17 @@ export function Membresias() {
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label htmlFor="input53" className="col-sm-3 col-form-label">
+                  <label htmlFor="input06" className="col-sm-4 col-form-label">
                     Seleccionar genero
                   </label>
-                  <div className="col-sm-9">
+                  <div className="col-sm-8">
                     <div className="input-group">
                       <span className="input-group-text">
                         <i className="bx bx-user-circle" />
                       </span>
                       <select
                         className="form-select"
-                        id="inputGenero"
+                        id="input06"
                         value={cliente?.Gender || ""}
                       >
                         <option value="">Seleccionar genero</option>
@@ -236,10 +236,10 @@ export function Membresias() {
                 </div>
 
                 <div className="row mb-3">
-                  <label htmlFor="input51" className="col-sm-3 col-form-label">
+                  <label htmlFor="input07" className="col-sm-4 col-form-label">
                     Correo Electrónico
                   </label>
-                  <div className="col-sm-9">
+                  <div className="col-sm-8">
                     <div className="input-group">
                       <span className="input-group-text">
                         <i className="bx bx-envelope" />
@@ -247,18 +247,18 @@ export function Membresias() {
                       <input
                         type="text"
                         className="form-control"
-                        id="input51"
+                        id="input07"
                         placeholder="Email"
-                        value={cliente?.Email || ""}
+                        value={cliente?.Mail || ""}
                       />
                     </div>
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label htmlFor="input50" className="col-sm-3 col-form-label">
+                  <label htmlFor="input08" className="col-sm-4 col-form-label">
                     Telefono
                   </label>
-                  <div className="col-sm-9">
+                  <div className="col-sm-8">
                     <div className="input-group">
                       <span className="input-group-text">
                         <i className="bx bx-phone" />
@@ -266,7 +266,7 @@ export function Membresias() {
                       <input
                         type="text"
                         className="form-control"
-                        id="input50"
+                        id="input08"
                         placeholder="Número"
                         value={cliente?.PhoneNumber || ""}
                       />
@@ -276,17 +276,17 @@ export function Membresias() {
               </div>
             </div>
           </div>
-          <div className="col-12 col-lg-5 d-flex">
+          <div className="col-12 col-lg-6 d-flex">
             <div className="card radius-10 w-100">
               <div className="card-header">
                 <div className="d-flex align-items-center">
                   <div>
-                    <h6 className="mb-0">PASO 2 : Membresia</h6>
+                    <h6 className="mb-0">PASO 2 : Tipo de membresia</h6>
                   </div>
                 </div>
               </div>
               <div className="card-body">
-                <div className="row mb-2">
+                <div className="row mb-4">
                   <div className="col">
                     <button className="btn btn-danger btn-block">
                       <i className="bx bx-purchase-tag"></i> Nueva membresía
@@ -298,9 +298,9 @@ export function Membresias() {
                     </button>
                   </div>
                 </div>
-                <div className="row mb-3">
+                <div className="row mb-4">
                   <div className="row">
-                    <div className="col">
+                    <div className="col-lg-6">
                       <label htmlFor="">Fecha inicio</label>
                       <div className="input-group">
                         <span className="input-group-text">
@@ -313,7 +313,7 @@ export function Membresias() {
                         />
                       </div>
                     </div>
-                    <div className="col">
+                    <div className="col-lg-6">
                       <label htmlFor="">Fecha fin</label>
                       <div className="input-group">
                         <span className="input-group-text">

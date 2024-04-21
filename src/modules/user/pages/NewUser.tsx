@@ -20,7 +20,7 @@ export function NewUser() {
     Dni: "",
     PhoneNumber: "",
     Mail: "",
-    Username: "",
+    UserName: "",
     Password: "",
     RoleId: "",
     Access: "",
@@ -71,7 +71,7 @@ export function NewUser() {
         "Dni",
         "PhoneNumber",
         "Mail",
-        "Username",
+        "UserName",
         "Password",
         "RoleId",
         "Access",
@@ -273,16 +273,16 @@ export function NewUser() {
                     <input
                       type="text"
                       className={`form-control ${
-                        errorMessages.Username && "is-invalid"
+                        errorMessages.UserName && "is-invalid"
                       }`}
                       id="input06"
                       placeholder="Usuario"
-                      name="Username"
+                      name="UserName"
                       onChange={handleInputChange}
                     />
-                    {errorMessages.Username && (
+                    {errorMessages.UserName && (
                       <div className="invalid-feedback">
-                        {errorMessages.Username}
+                        {errorMessages.UserName}
                       </div>
                     )}
                   </div>
@@ -387,7 +387,7 @@ export function NewUser() {
                 </div>
               </div>
               <div className="row mt-4">
-                <div className="col">{/* Contenido */}</div>
+                <div className="col"></div>
                 <div className="col-auto ml-auto">
                   <button
                     className="btn btn-danger btn-block"

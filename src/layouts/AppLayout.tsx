@@ -439,7 +439,7 @@ function AppLayout() {
                     alt="user avatar"
                   />
                   <div className="user-info">
-                    <p className="user-name mb-0">{user?.Username}</p>
+                    <p className="user-name mb-0">{user?.UserName}</p>
                     <p className="designattion mb-0">
                       {user?.RoleId === 1 ? "Usuario supremo" : "Usuario"}
                     </p>
@@ -449,7 +449,7 @@ function AppLayout() {
                   <li>
                     <a
                       className="dropdown-item d-flex align-items-center"
-                      href="#"
+                      href="/"
                     >
                       <i className="bx bx-user fs-5" />
                       <span>Perfil</span>
@@ -458,7 +458,7 @@ function AppLayout() {
                   <li>
                     <a
                       className="dropdown-item d-flex align-items-center"
-                      href="#"
+                      href="/"
                     >
                       <i className="bx bx-cog fs-5" />
                       <span>Configuracion</span>
@@ -471,7 +471,7 @@ function AppLayout() {
                   <li>
                     <a
                       className="dropdown-item d-flex align-items-center"
-                      href="#"
+                      href="/"
                     >
                       <i className="bx bx-log-out-circle" />
                       <span>Cerrar sesión</span>

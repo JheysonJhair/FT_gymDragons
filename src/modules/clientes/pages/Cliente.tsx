@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { obtenerClientes } from "../../../services/Cliente";
-import { allCliente } from "../../../types/Cliente";
+import { Cliente } from "../../../types/Cliente";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 export function Clientes() {
-  const [clientes, setClientes] = useState<allCliente[]>([]);
+  const [clientes, setClientes] = useState<Cliente[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [clientesPerPage] = useState(9);
   const [searchTerm, setSearchTerm] = useState("");
@@ -131,7 +131,7 @@ export function Clientes() {
                   <td>{cliente.LastName}</td>
                   <td>{cliente.Document}</td>
                   <td>{cliente.PhoneNumber}</td>
-                  <td>{cliente.Email}</td>
+                  <td>{cliente.Mail}</td>
                   <td>{cliente.MaritalStatus}</td>
                   <td>{cliente.Whatsapp}</td>
                   <td>{cliente.Gender}</td>
